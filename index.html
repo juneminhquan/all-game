@@ -23,6 +23,15 @@
             transform: translateY(-5px);
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
         }
+        /* Custom class to center the 3rd card in the 2-column layout on large screens */
+        @media (min-width: 1024px) {
+            .game-grid > *:nth-child(3) {
+                grid-column: span 2 / span 2; /* Chiếm cả 2 cột */
+                max-width: 50%; /* Giảm chiều rộng để căn giữa */
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
     </style>
 </head>
 <body class="min-h-screen">
@@ -34,14 +43,15 @@
                 Tổng hợp game của June
             </h1>
             <p class="text-xl sm:text-2xl font-light opacity-90 max-w-3xl mx-auto">
-                Kết hợp học tập và phiêu lưu qua hai trò chơi đầy thử thách và hấp dẫn.
+                Khám phá thế giới qua ba trò chơi đầy thử thách, phiêu lưu và hấp dẫn.
             </p>
         </div>
     </header>
 
     <!-- Main Content - Game Cards -->
     <main class="container mx-auto px-4 py-12 sm:py-20">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16">
+        <!-- Grid container với 1 cột trên mobile/2 cột trên desktop -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-10 lg:gap-16 game-grid">
 
             <!-- Game Card 1: Hành trình giải cứu hành tinh bí ẩn -->
             <div class="game-card bg-white p-6 sm:p-8 rounded-xl shadow-2xl flex flex-col md:flex-row items-center">
@@ -88,6 +98,31 @@
                     </p>
                     <a href="https://juneminhquan.github.io/game-number-detective/" target="_blank" class="inline-block px-8 py-3 bg-green-600 text-white font-semibold rounded-full shadow-lg hover:bg-green-700 transform hover:scale-105 transition duration-300">
                         Gia nhập Học viện!
+                    </a>
+                </div>
+            </div>
+
+            <!-- Game Card 3: Đại dương bí ẩn -->
+            <div class="game-card bg-white p-6 sm:p-8 rounded-xl shadow-2xl flex flex-col md:flex-row items-center">
+                <!-- Icon/Placeholder -->
+                <div class="flex-shrink-0 mb-6 md:mb-0 md:mr-8 p-4 bg-cyan-100 rounded-full">
+                    <!-- Icon Đại dương / Sóng -->
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-cyan-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M2 12s3-4 6-4 4 8 8 8 6-4 6-4"></path>
+                        <path d="M2 18s3-4 6-4 4 8 8 8 6-4 6-4"></path>
+                        <path d="M2 6s3-4 6-4 4 8 8 8 6-4 6-4"></path>
+                    </svg>
+                </div>
+                
+                <!-- Content -->
+                <div class="flex-grow text-center md:text-left">
+                    <h2 class="text-3xl font-bold text-gray-900 mb-3">Đại dương bí ẩn</h2>
+                    <p class="text-gray-600 mb-6">
+                        Lặn sâu xuống đáy đại dương, khám phá các sinh vật biển kỳ thú và giải các câu đố logic về môi trường nước. Trò chơi giáo dục lý tưởng cho những nhà thám hiểm yêu khoa học tự nhiên.
+                    </p>
+                    <!-- Đường link đã được cập nhật chính xác -->
+                    <a href="https://juneminhquan.github.io/dai-duong-bi-an/" target="_blank" class="inline-block px-8 py-3 bg-cyan-600 text-white font-semibold rounded-full shadow-lg hover:bg-cyan-700 transform hover:scale-105 transition duration-300">
+                        Khám phá Đại dương!
                     </a>
                 </div>
             </div>
