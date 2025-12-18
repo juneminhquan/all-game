@@ -23,7 +23,6 @@
             transform: translateY(-5px);
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
         }
-        /* Đã xóa CSS căn giữa thẻ thứ 3 vì bây giờ có 4 thẻ, bố cục 2x2 sẽ tự động căn chỉnh */
     </style>
 </head>
 <body class="min-h-screen">
@@ -35,111 +34,121 @@
                 Tổng hợp game của June
             </h1>
             <p class="text-xl sm:text-2xl font-light opacity-90 max-w-3xl mx-auto">
-                Khám phá thế giới qua bốn trò chơi đầy thử thách, phiêu lưu và hấp dẫn.
+                Khám phá thế giới qua những trò chơi đầy thử thách, phiêu lưu và hấp dẫn.
             </p>
         </div>
     </header>
 
     <!-- Main Content - Game Cards -->
     <main class="container mx-auto px-4 py-12 sm:py-20">
-        <!-- Grid container với 1 cột trên mobile/2 cột trên desktop -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-10 lg:gap-16 game-grid">
+        <!-- Grid container với 1 cột trên mobile/2 cột trên tablet/3 cột trên desktop -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
 
             <!-- Game Card 1: Hành trình giải cứu hành tinh bí ẩn -->
-            <div class="game-card bg-white p-6 sm:p-8 rounded-xl shadow-2xl flex flex-col md:flex-row items-center">
-                <!-- Icon/Placeholder -->
-                <div class="flex-shrink-0 mb-6 md:mb-0 md:mr-8 p-4 bg-yellow-100 rounded-full">
-                    <!-- Icon Hành tinh / Tên lửa -->
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-yellow-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M12 2a10 10 0 0 0 0 20c5.523 0 10-4.477 10-10S17.523 2 12 2z"></path>
-                        <path d="M12 2c-5.523 0-10 4.477-10 10s4.477 10 10 10"></path>
-                        <line x1="12" y1="2" x2="12" y2="22"></line>
-                        <line x1="2" y1="12" x2="22" y2="12"></line>
-                    </svg>
+            <div class="game-card bg-white p-6 rounded-xl shadow-2xl flex flex-col h-full">
+                <div class="flex items-center mb-4">
+                    <div class="p-3 bg-yellow-100 rounded-full mr-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-yellow-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2a10 10 0 0 0 0 20c5.523 0 10-4.477 10-10S17.523 2 12 2z"></path>
+                            <path d="M12 2c-5.523 0-10 4.477-10 10s4.477 10 10 10"></path>
+                            <line x1="12" y1="2" x2="12" y2="22"></line>
+                            <line x1="2" y1="12" x2="22" y2="12"></line>
+                        </svg>
+                    </div>
+                    <h2 class="text-2xl font-bold text-gray-900">Giải cứu hành tinh</h2>
                 </div>
-                
-                <!-- Content -->
-                <div class="flex-grow text-center md:text-left">
-                    <h2 class="text-3xl font-bold text-gray-900 mb-3">Hành trình giải cứu hành tinh bí ẩn</h2>
-                    <p class="text-gray-600 mb-6">
-                        Tham gia vào cuộc phiêu lưu giữa ngân hà, sử dụng kiến thức toán học để giải các bài toán, sửa chữa tàu vũ trụ và khám phá các hành tinh mới! Trò chơi giúp luyện tập kỹ năng tính toán trong một bối cảnh đầy thú vị.
-                    </p>
-                    <a href="https://juneminhquan.github.io/game-solar-system-maths/" target="_blank" class="inline-block px-8 py-3 bg-red-600 text-white font-semibold rounded-full shadow-lg hover:bg-red-700 transform hover:scale-105 transition duration-300">
-                        Bắt đầu Giải cứu!
-                    </a>
-                </div>
+                <p class="text-gray-600 mb-6 flex-grow">
+                    Sử dụng kiến thức toán học để giải bài toán, sửa chữa tàu vũ trụ và khám phá các hành tinh mới!
+                </p>
+                <a href="https://juneminhquan.github.io/game-solar-system-maths/" target="_blank" class="text-center px-6 py-3 bg-red-600 text-white font-semibold rounded-lg hover:bg-red-700 transition duration-300">
+                    Bắt đầu Giải cứu!
+                </a>
             </div>
 
             <!-- Game Card 2: Học viện thám tử số học -->
-            <div class="game-card bg-white p-6 sm:p-8 rounded-xl shadow-2xl flex flex-col md:flex-row items-center">
-                <!-- Icon/Placeholder -->
-                <div class="flex-shrink-0 mb-6 md:mb-0 md:mr-8 p-4 bg-blue-100 rounded-full">
-                    <!-- Icon Thám tử / Kính lúp -->
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-blue-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                        <circle cx="11" cy="11" r="8"></circle>
-                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                        <path d="M12 5v6h6"></path>
-                    </svg>
+            <div class="game-card bg-white p-6 rounded-xl shadow-2xl flex flex-col h-full">
+                <div class="flex items-center mb-4">
+                    <div class="p-3 bg-blue-100 rounded-full mr-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-blue-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                            <path d="M12 5v6h6"></path>
+                        </svg>
+                    </div>
+                    <h2 class="text-2xl font-bold text-gray-900">Thám tử số học</h2>
                 </div>
-                
-                <!-- Content -->
-                <div class="flex-grow text-center md:text-left">
-                    <h2 class="text-3xl font-bold text-gray-900 mb-3">Học viện thám tử số học</h2>
-                    <p class="text-gray-600 mb-6">
-                        Bạn đã sẵn sàng trở thành thám tử? Hãy vận dụng tư duy logic và kỹ năng số học để giải mã các manh mối và tìm ra những con số bí ẩn. Rèn luyện trí thông minh và khả năng suy luận!
-                    </p>
-                    <a href="https://juneminhquan.github.io/game-number-detective/" target="_blank" class="inline-block px-8 py-3 bg-green-600 text-white font-semibold rounded-full shadow-lg hover:bg-green-700 transform hover:scale-105 transition duration-300">
-                        Gia nhập Học viện!
-                    </a>
-                </div>
+                <p class="text-gray-600 mb-6 flex-grow">
+                    Vận dụng tư duy logic để giải mã các manh mối và tìm ra những con số bí ẩn đầy thú vị.
+                </p>
+                <a href="https://juneminhquan.github.io/game-number-detective/" target="_blank" class="text-center px-6 py-3 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700 transition duration-300">
+                    Gia nhập Học viện!
+                </a>
             </div>
 
             <!-- Game Card 3: Đại dương bí ẩn -->
-            <div class="game-card bg-white p-6 sm:p-8 rounded-xl shadow-2xl flex flex-col md:flex-row items-center">
-                <!-- Icon/Placeholder -->
-                <div class="flex-shrink-0 mb-6 md:mb-0 md:mr-8 p-4 bg-cyan-100 rounded-full">
-                    <!-- Icon Đại dương / Sóng -->
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-cyan-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M2 12s3-4 6-4 4 8 8 8 6-4 6-4"></path>
-                        <path d="M2 18s3-4 6-4 4 8 8 8 6-4 6-4"></path>
-                        <path d="M2 6s3-4 6-4 4 8 8 8 6-4 6-4"></path>
-                    </svg>
+            <div class="game-card bg-white p-6 rounded-xl shadow-2xl flex flex-col h-full">
+                <div class="flex items-center mb-4">
+                    <div class="p-3 bg-cyan-100 rounded-full mr-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-cyan-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M2 12s3-4 6-4 4 8 8 8 6-4 6-4"></path>
+                            <path d="M2 18s3-4 6-4 4 8 8 8 6-4 6-4"></path>
+                            <path d="M2 6s3-4 6-4 4 8 8 8 6-4 6-4"></path>
+                        </svg>
+                    </div>
+                    <h2 class="text-2xl font-bold text-gray-900">Đại dương bí ẩn</h2>
                 </div>
-                
-                <!-- Content -->
-                <div class="flex-grow text-center md:text-left">
-                    <h2 class="text-3xl font-bold text-gray-900 mb-3">Đại dương bí ẩn</h2>
-                    <p class="text-gray-600 mb-6">
-                        Lặn sâu xuống đáy đại dương, khám phá các sinh vật biển kỳ thú và giải các câu đố logic về môi trường nước. Trò chơi giáo dục lý tưởng cho những nhà thám hiểm yêu khoa học tự nhiên.
-                    </p>
-                    <!-- Đường link đã được cập nhật chính xác -->
-                    <a href="https://juneminhquan.github.io/dai-duong-bi-an/" target="_blank" class="inline-block px-8 py-3 bg-cyan-600 text-white font-semibold rounded-full shadow-lg hover:bg-cyan-700 transform hover:scale-105 transition duration-300">
-                        Khám phá Đại dương!
-                    </a>
-                </div>
+                <p class="text-gray-600 mb-6 flex-grow">
+                    Khám phá sinh vật biển kỳ thú và giải các câu đố logic về môi trường nước sâu thẳm.
+                </p>
+                <a href="https://juneminhquan.github.io/dai-duong-bi-an/" target="_blank" class="text-center px-6 py-3 bg-cyan-600 text-white font-semibold rounded-lg hover:bg-cyan-700 transition duration-300">
+                    Khám phá ngay!
+                </a>
             </div>
 
             <!-- Game Card 4: Game Cảnh Sát -->
-            <div class="game-card bg-white p-6 sm:p-8 rounded-xl shadow-2xl flex flex-col md:flex-row items-center">
-                <!-- Icon/Placeholder -->
-                <div class="flex-shrink-0 mb-6 md:mb-0 md:mr-8 p-4 bg-indigo-100 rounded-full">
-                    <!-- Icon Cảnh sát / Huy hiệu (Shield) -->
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-indigo-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                    </svg>
+            <div class="game-card bg-white p-6 rounded-xl shadow-2xl flex flex-col h-full">
+                <div class="flex items-center mb-4">
+                    <div class="p-3 bg-indigo-100 rounded-full mr-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-indigo-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                        </svg>
+                    </div>
+                    <h2 class="text-2xl font-bold text-gray-900">Game Cảnh Sát</h2>
                 </div>
-                
-                <!-- Content -->
-                <div class="flex-grow text-center md:text-left">
-                    <h2 class="text-3xl font-bold text-gray-900 mb-3">Game Cảnh Sát</h2>
-                    <p class="text-gray-600 mb-6">
-                        Tham gia lực lượng cảnh sát, rèn luyện kỹ năng quan sát, suy luận logic và phản xạ nhanh để truy bắt tội phạm. Bảo vệ an ninh thành phố trong những nhiệm vụ đầy kịch tính!
-                    </p>
-                    <!-- Đường link đã được cập nhật -->
-                    <a href="https://juneminhquan.github.io/police-mision-game/" target="_blank" class="inline-block px-8 py-3 bg-indigo-600 text-white font-semibold rounded-full shadow-lg hover:bg-indigo-700 transform hover:scale-105 transition duration-300">
-                        Bắt đầu làm nhiệm vụ!
-                    </a>
+                <p class="text-gray-600 mb-6 flex-grow">
+                    Truy bắt tội phạm và bảo vệ an ninh thành phố qua những nhiệm vụ logic và phản xạ nhanh.
+                </p>
+                <a href="https://juneminhquan.github.io/police-mision-game/" target="_blank" class="text-center px-6 py-3 bg-indigo-600 text-white font-semibold rounded-lg hover:bg-indigo-700 transition duration-300">
+                    Làm nhiệm vụ!
+                </a>
+            </div>
+
+            <!-- Game Card 5: Thi đua gõ phím -->
+            <div class="game-card bg-white p-6 rounded-xl shadow-2xl flex flex-col h-full">
+                <div class="flex items-center mb-4">
+                    <div class="p-3 bg-orange-100 rounded-full mr-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-orange-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect>
+                            <line x1="6" y1="8" x2="6" y2="8"></line>
+                            <line x1="10" y1="8" x2="10" y2="8"></line>
+                            <line x1="14" y1="8" x2="14" y2="8"></line>
+                            <line x1="18" y1="8" x2="18" y2="8"></line>
+                            <line x1="6" y1="12" x2="6" y2="12"></line>
+                            <line x1="10" y1="12" x2="10" y2="12"></line>
+                            <line x1="14" y1="12" x2="14" y2="12"></line>
+                            <line x1="18" y1="12" x2="18" y2="12"></line>
+                            <line x1="7" y1="16" x2="17" y2="16"></line>
+                        </svg>
+                    </div>
+                    <h2 class="text-2xl font-bold text-gray-900">Thi đua gõ phím</h2>
                 </div>
+                <p class="text-gray-600 mb-6 flex-grow">
+                    Thử thách tốc độ và độ chính xác của bạn trên bàn phím. Ai sẽ là người gõ nhanh nhất?
+                </p>
+                <!-- Cập nhật link thi đua gõ phím -->
+                <a href="https://juneminhquan.github.io/global-room/" target="_blank" class="text-center px-6 py-3 bg-orange-600 text-white font-semibold rounded-lg hover:bg-orange-700 transition duration-300">
+                    Bắt đầu Đua!
+                </a>
             </div>
 
         </div>
@@ -152,7 +161,7 @@
                 &copy; 2024 Tổng hợp game của June. Tất cả bản quyền được bảo lưu.
             </p>
             <p class="text-xs mt-1 opacity-75">
-                Được thiết kế để kết nối việc học và giải trí.
+                Thiết kế bởi June - Học tập qua trò chơi.
             </p>
         </div>
     </footer>
