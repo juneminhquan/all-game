@@ -4,14 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tổng hợp nội dung bổ ích của June</title>
+    
+    <!-- Cấu hình PWA Meta Tags -->
+    <meta name="theme-color" content="#1e40af">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Góc June">
+    
+    <!-- Web App Manifest (Inline) -->
+    <link rel="manifest" href="data:application/json;base64,ewogICJuYW1lIjogIkfDs2MgVHLDrSBUdeG7hyBj4bunYSBKdW5lIiwKICAic2hvcnRfbmFtZSI6ICJKdW5lR2FtZSIsCiAgInN0YXJ0X3VybCI6ICIuIiwKICAiZGlzcGxheSI6ICJzdGFuZGFsb25lIiwKICAiYmFja2dyb3VuZF9jb2xvciI6ICIjZjhmYWZjIiwKICAidGhlbWVfY29sb3IiOiAiIzFlNDBhZiIsCiAgImljb25zIjogWwogICAgewogICAgICAic3JjIjogImh0dHBzOi8vY2RuLWljb25zLXBuZy5mbGF0aWNvbi5jb20vNTEyLzM5NzYvMzk3NjYyNS5wbmciLAogICAgICAic2l6ZXMiOiAiNTEyeDUxMiIsCiAgICAgICJ0eXBlIjogImltYWdlL3BuZyIKICAgIH0KICBdCn0=">
+
     <!-- Tải Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    
     <!-- Cấu hình Tailwind và Font Inter -->
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f8fafc; /* Nền sáng, sạch sẽ */
+            background-color: #f8fafc;
         }
         .gradient-hero {
             background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
@@ -36,13 +47,34 @@
             <p class="text-xl sm:text-2xl font-light opacity-90 max-w-3xl mx-auto">
                 Khám phá những công cụ học tập hàng đầu và các trò chơi trí tuệ lành mạnh dành cho bạn.
             </p>
+            <!-- Nút cài đặt ứng dụng (Chỉ hiện nếu trình duyệt hỗ trợ) -->
+            <button id="installBtn" class="hidden mt-8 px-8 py-3 bg-white text-blue-700 font-bold rounded-full shadow-lg hover:bg-gray-100 transition">
+                Cài đặt ứng dụng về máy
+            </button>
         </div>
     </header>
 
     <!-- Main Content -->
     <main class="container mx-auto px-4 py-12">
-        <!-- Grid container -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+            <!-- Grandmaster Chess (NEW) -->
+            <div class="app-card bg-white p-6 rounded-2xl shadow-xl flex flex-col h-full border-t-8 border-violet-600">
+                <div class="flex items-center mb-4">
+                    <div class="p-3 bg-violet-50 rounded-xl mr-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-violet-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                        </svg>
+                    </div>
+                    <h2 class="text-2xl font-bold text-gray-800">Grandmaster Chess</h2>
+                </div>
+                <p class="text-gray-600 mb-6 flex-grow">
+                    Nâng tầm kỹ năng cờ vua của bạn với các thử thách và bài học từ các đại kiện tướng.
+                </p>
+                <a href="https://grandmasterchess.lovable.app" target="_blank" class="text-center px-6 py-3 bg-violet-600 text-white font-bold rounded-xl hover:bg-violet-700 transition">
+                    Trở thành Đại kiện tướng
+                </a>
+            </div>
 
             <!-- Khan Academy -->
             <div class="app-card bg-white p-6 rounded-2xl shadow-xl flex flex-col h-full border-t-8 border-lime-500">
@@ -56,14 +88,14 @@
                     <h2 class="text-2xl font-bold text-gray-800">Khan Academy</h2>
                 </div>
                 <p class="text-gray-600 mb-6 flex-grow">
-                    Nền tảng học tập miễn phí hàng đầu. Học lập trình HTML/CSS, toán học và nhiều môn học khác một cách thú vị.
+                    Học lập trình HTML/CSS, toán học và nhiều môn học khác miễn phí.
                 </p>
                 <a href="https://www.khanacademy.org/computing/computer-programming/html-css" target="_blank" class="text-center px-6 py-3 bg-lime-600 text-white font-bold rounded-xl hover:bg-lime-700 transition">
                     Bắt đầu học ngay
                 </a>
             </div>
 
-            <!-- Chess.com (NEW) -->
+            <!-- Chess.com -->
             <div class="app-card bg-white p-6 rounded-2xl shadow-xl flex flex-col h-full border-t-8 border-emerald-500">
                 <div class="flex items-center mb-4">
                     <div class="p-3 bg-emerald-50 rounded-xl mr-4">
@@ -75,7 +107,7 @@
                     <h2 class="text-2xl font-bold text-gray-800">Chess.com</h2>
                 </div>
                 <p class="text-gray-600 mb-6 flex-grow">
-                    Cộng đồng cờ vua lớn nhất thế giới. Chơi trực tuyến, giải đố và học hỏi từ các đại kiện tướng hàng đầu.
+                    Cộng đồng cờ vua lớn nhất thế giới. Chơi trực tuyến và giải đố trí tuệ.
                 </p>
                 <a href="https://www.chess.com/" target="_blank" class="text-center px-6 py-3 bg-emerald-600 text-white font-bold rounded-xl hover:bg-emerald-700 transition">
                     Chơi trên Chess.com
@@ -90,13 +122,12 @@
                             <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                             <polyline points="14 2 14 8 20 8"></polyline>
                             <line x1="16" y1="13" x2="8" y2="13"></line>
-                            <line x1="16" y1="17" x2="8" y2="17"></line>
                         </svg>
                     </div>
                     <h2 class="text-2xl font-bold text-gray-800">Word Office</h2>
                 </div>
                 <p class="text-gray-600 mb-6 flex-grow">
-                    Công cụ soạn thảo văn bản chuyên nghiệp. Giúp bạn trình bày bài tập và dự án một cách đẹp mắt nhất.
+                    Công cụ soạn thảo văn bản chuyên nghiệp cho các bài tập của bạn.
                 </p>
                 <a href="https://quill-charm-maker.lovable.app" target="_blank" class="text-center px-6 py-3 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-700 transition">
                     Mở tài liệu
@@ -109,14 +140,13 @@
                     <div class="p-3 bg-red-50 rounded-xl mr-4">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-red-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <circle cx="12" cy="12" r="10"></circle>
-                            <path d="M12 6v6l4 2"></path>
-                            <path d="M16 12H8"></path>
+                            <path d="M12 6v6l4 2M16 12H8"></path>
                         </svg>
                     </div>
                     <h2 class="text-2xl font-bold text-gray-800">Xiangqi</h2>
                 </div>
                 <p class="text-gray-600 mb-6 flex-grow">
-                    Thử thách kỹ năng cờ tướng của bạn với máy tính. Có nhiều cấp độ từ dễ đến khó để bạn luyện tập hàng ngày.
+                    Thử thách kỹ năng cờ tướng của bạn với máy tính ở nhiều cấp độ.
                 </p>
                 <a href="https://play.xiangqi.com/computer" target="_blank" class="text-center px-6 py-3 bg-red-600 text-white font-bold rounded-xl hover:bg-red-700 transition">
                     Đấu với máy
@@ -135,7 +165,7 @@
                     <h2 class="text-2xl font-bold text-gray-800">June Chess</h2>
                 </div>
                 <p class="text-gray-600 mb-6 flex-grow">
-                    Rèn luyện tư duy chiến thuật qua bộ môn cờ vua. Giao diện mượt mà và thân thiện.
+                    Rèn luyện tư duy chiến thuật qua bộ môn cờ vua nguyên bản.
                 </p>
                 <a href="https://juneminhquan.github.io/June-chess-game/" target="_blank" class="text-center px-6 py-3 bg-sky-500 text-white font-bold rounded-xl hover:bg-sky-600 transition">
                     Chơi June Chess
@@ -154,7 +184,7 @@
                     <h2 class="text-2xl font-bold text-gray-800">Gia sư Tiếng Anh</h2>
                 </div>
                 <p class="text-gray-600 mb-6 flex-grow">
-                    Nâng cao khả năng ngoại ngữ một cách tự nhiên và hiệu quả mỗi ngày.
+                    Nâng cao khả năng ngoại ngữ một cách tự nhiên và vui vẻ.
                 </p>
                 <a href="https://my-speak-buddy.lovable.app" target="_blank" class="text-center px-6 py-3 bg-rose-500 text-white font-bold rounded-xl hover:bg-rose-600 transition">
                     Học Tiếng Anh
@@ -167,14 +197,13 @@
                     <div class="p-3 bg-amber-50 rounded-xl mr-4">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-amber-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <circle cx="12" cy="12" r="10"></circle>
-                            <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path>
-                            <path d="M2 12h20"></path>
+                            <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20M2 12h20"></path>
                         </svg>
                     </div>
                     <h2 class="text-2xl font-bold text-gray-800">Giải cứu hành tinh</h2>
                 </div>
                 <p class="text-gray-600 mb-6 flex-grow">
-                    Vừa chơi vừa học toán! Giải các phép tính để bảo vệ vũ trụ khỏi những rắc rối.
+                    Vừa chơi vừa học toán bảo vệ vũ trụ khỏi rắc rối số học.
                 </p>
                 <a href="https://juneminhquan.github.io/game-solar-system-maths/" target="_blank" class="text-center px-6 py-3 bg-amber-500 text-white font-bold rounded-xl hover:bg-amber-600 transition">
                     Chơi Toán Học
@@ -187,13 +216,13 @@
                     <div class="p-3 bg-orange-50 rounded-xl mr-4">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-orange-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect>
-                            <path d="M6 8h.01M10 8h.01M14 8h.01M18 8h.01M6 12h.01M10 12h.01M14 12h.01M18 12h.01M7 16h10"></path>
+                            <path d="M7 16h10M6 8h.01M10 8h.01M14 8h.01M18 8h.01"></path>
                         </svg>
                     </div>
                     <h2 class="text-2xl font-bold text-gray-800">Thi đua gõ phím</h2>
                 </div>
                 <p class="text-gray-600 mb-6 flex-grow">
-                    Rèn luyện kỹ năng đánh máy siêu tốc. Hãy xem bạn có thể gõ nhanh đến mức nào!
+                    Rèn luyện kỹ năng đánh máy siêu tốc cùng bạn bè.
                 </p>
                 <a href="https://juneminhquan.github.io/global-room/" target="_blank" class="text-center px-6 py-3 bg-orange-600 text-white font-bold rounded-xl hover:bg-orange-700 transition">
                     Đua Tốc Độ
@@ -212,7 +241,7 @@
                     <h2 class="text-2xl font-bold text-gray-800">Cờ Tướng June</h2>
                 </div>
                 <p class="text-gray-600 mb-6 flex-grow">
-                    Khám phá nét đẹp trí tuệ truyền thống. Thử thách bản thân với những nước cờ điêu luyện.
+                    Khám phá nét đẹp trí tuệ truyền thống qua cờ tướng.
                 </p>
                 <a href="https://juneminhquan.github.io/co-tuong/" target="_blank" class="text-center px-6 py-3 bg-red-700 text-white font-bold rounded-xl hover:bg-red-800 transition">
                     Chơi Cờ Tướng
@@ -226,16 +255,43 @@
     <footer class="bg-gray-900 text-white py-10 mt-12">
         <div class="container mx-auto px-4 text-center">
             <p class="text-lg font-semibold mb-2">Góc Trí Tuệ của June</p>
-            <p class="text-sm opacity-60">
-                Luôn cập nhật những nội dung an toàn, lành mạnh và bổ ích cho sự phát triển của bạn.
-            </p>
-            <div class="mt-6 flex justify-center space-x-4">
-                <span class="inline-block px-3 py-1 bg-gray-800 rounded-full text-xs">#AnToàn</span>
-                <span class="inline-block px-3 py-1 bg-gray-800 rounded-full text-xs">#HọcTập</span>
-                <span class="inline-block px-3 py-1 bg-gray-800 rounded-full text-xs">#TríTuệ</span>
-            </div>
+            <p class="text-sm opacity-60">An toàn - Lành mạnh - Bổ ích</p>
         </div>
     </footer>
 
+    <!-- Script cho PWA Service Worker & Install Logic -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                const swCode = `
+                    self.addEventListener('install', (e) => self.skipWaiting());
+                    self.addEventListener('fetch', (e) => e.respondWith(fetch(e.request)));
+                `;
+                const blob = new Blob([swCode], { type: 'application/javascript' });
+                const swUrl = URL.createObjectURL(blob);
+                navigator.serviceWorker.register(swUrl).catch(err => console.log('SW registration failed'));
+            });
+        }
+
+        let deferredPrompt;
+        const installBtn = document.getElementById('installBtn');
+
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            installBtn.classList.remove('hidden');
+        });
+
+        installBtn.addEventListener('click', async () => {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                const { outcome } = await deferredPrompt.userChoice;
+                if (outcome === 'accepted') {
+                    installBtn.classList.add('hidden');
+                }
+                deferredPrompt = null;
+            }
+        });
+    </script>
 </body>
 </html>
