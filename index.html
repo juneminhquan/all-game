@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tổng hợp nội dung bổ ích của June</title>
+    <title>Góc Trí Tuệ của June</title>
     
     <!-- Cấu hình PWA Meta Tags -->
     <meta name="theme-color" content="#1e40af">
@@ -17,250 +17,238 @@
     <!-- Tải Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Cấu hình Tailwind và Font Inter -->
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f8fafc;
         }
-        .gradient-hero {
-            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+        .nav-link {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .nav-link.active {
+            background-color: #1e40af;
+            color: white;
+        }
+        .section-fade {
+            animation: fadeIn 0.4s ease-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         .app-card {
             transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
         }
         .app-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.15);
         }
     </style>
 </head>
-<body class="min-h-screen">
+<body class="min-h-screen flex flex-col">
 
-    <!-- Header / Hero Section -->
-    <header class="gradient-hero py-16 sm:py-24 text-white shadow-lg">
-        <div class="container mx-auto px-4 text-center">
-            <h1 class="text-4xl sm:text-6xl font-extrabold mb-4">
-                Thế Giới Học Tập & Trí Tuệ
-            </h1>
-            <p class="text-xl sm:text-2xl font-light opacity-90 max-w-3xl mx-auto">
-                Khám phá những công cụ học tập hàng đầu và các trò chơi trí tuệ lành mạnh dành cho bạn.
-            </p>
-            <!-- Nút cài đặt ứng dụng (Chỉ hiện nếu trình duyệt hỗ trợ) -->
-            <button id="installBtn" class="hidden mt-8 px-8 py-3 bg-white text-blue-700 font-bold rounded-full shadow-lg hover:bg-gray-100 transition">
-                Cài đặt ứng dụng về máy
-            </button>
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm border-b border-gray-100 sticky top-0 z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-2">
+                    <div class="w-10 h-10 bg-blue-700 rounded-xl flex items-center justify-center text-white font-bold shadow-inner">J</div>
+                    <span class="text-xl font-black text-blue-900 tracking-tight hidden sm:inline">JUNE ACADEMY</span>
+                </div>
+                <div class="flex bg-gray-100 p-1 rounded-xl space-x-1">
+                    <button onclick="showSection('home')" id="btn-home" class="nav-link px-4 py-2 rounded-lg text-gray-600 font-semibold text-sm active">Trang Chủ</button>
+                    <button onclick="showSection('play-learn')" id="btn-play-learn" class="nav-link px-4 py-2 rounded-lg text-gray-600 font-semibold text-sm">Chơi & Học</button>
+                    <button onclick="showSection('docs')" id="btn-docs" class="nav-link px-4 py-2 rounded-lg text-gray-600 font-semibold text-sm">Tài Liệu</button>
+                </div>
+            </div>
         </div>
-    </header>
+    </nav>
 
-    <!-- Main Content -->
-    <main class="container mx-auto px-4 py-12">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <!-- Content -->
+    <main class="flex-grow container mx-auto px-4 py-8">
 
-            <!-- Grandmaster Chess (NEW) -->
-            <div class="app-card bg-white p-6 rounded-2xl shadow-xl flex flex-col h-full border-t-8 border-violet-600">
-                <div class="flex items-center mb-4">
-                    <div class="p-3 bg-violet-50 rounded-xl mr-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-violet-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
-                        </svg>
+        <!-- SECTION: TRANG CHỦ -->
+        <section id="section-home" class="section-fade">
+            <div class="bg-gradient-to-br from-blue-800 to-indigo-600 rounded-[2rem] p-8 sm:p-16 text-white mb-12 shadow-2xl relative overflow-hidden">
+                <div class="relative z-10 max-w-2xl">
+                    <h1 class="text-4xl sm:text-6xl font-black mb-6 leading-tight">Khám phá tiềm năng của bạn</h1>
+                    <p class="text-lg sm:text-xl opacity-90 mb-10 font-medium leading-relaxed">
+                        Chào mừng đến với không gian học tập và giải trí an toàn. Hãy chọn một chuyên mục phía trên để bắt đầu hành trình của mình!
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <button onclick="showSection('play-learn')" class="bg-white text-blue-800 px-8 py-4 rounded-2xl font-bold hover:shadow-xl transition-all active:scale-95">Chơi & Học ngay</button>
+                        <button id="installBtn" class="hidden bg-blue-700/50 backdrop-blur-sm border border-blue-400 text-white px-8 py-4 rounded-2xl font-bold hover:bg-blue-700/80 transition-all">Tải ứng dụng</button>
                     </div>
-                    <h2 class="text-2xl font-bold text-gray-800">Grandmaster Chess</h2>
                 </div>
-                <p class="text-gray-600 mb-6 flex-grow">
-                    Nâng tầm kỹ năng cờ vua của bạn với các thử thách và bài học từ các đại kiện tướng.
-                </p>
-                <a href="https://grandmasterchess.lovable.app" target="_blank" class="text-center px-6 py-3 bg-violet-600 text-white font-bold rounded-xl hover:bg-violet-700 transition">
-                    Trở thành Đại kiện tướng
-                </a>
+                <!-- Trang trí -->
+                <div class="absolute -right-20 -bottom-20 w-80 h-80 bg-white/10 rounded-full blur-3xl"></div>
             </div>
 
-            <!-- Khan Academy -->
-            <div class="app-card bg-white p-6 rounded-2xl shadow-xl flex flex-col h-full border-t-8 border-lime-500">
-                <div class="flex items-center mb-4">
-                    <div class="p-3 bg-lime-50 rounded-xl mr-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-lime-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
-                            <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
-                        </svg>
-                    </div>
-                    <h2 class="text-2xl font-bold text-gray-800">Khan Academy</h2>
-                </div>
-                <p class="text-gray-600 mb-6 flex-grow">
-                    Học lập trình HTML/CSS, toán học và nhiều môn học khác miễn phí.
-                </p>
-                <a href="https://www.khanacademy.org/computing/computer-programming/html-css" target="_blank" class="text-center px-6 py-3 bg-lime-600 text-white font-bold rounded-xl hover:bg-lime-700 transition">
-                    Bắt đầu học ngay
-                </a>
+            <div class="flex items-center space-x-3 mb-8">
+                <div class="h-8 w-2 bg-blue-700 rounded-full"></div>
+                <h2 class="text-2xl font-bold text-gray-800 tracking-tight">Gợi ý dành cho bạn</h2>
             </div>
 
-            <!-- Chess.com -->
-            <div class="app-card bg-white p-6 rounded-2xl shadow-xl flex flex-col h-full border-t-8 border-emerald-500">
-                <div class="flex items-center mb-4">
-                    <div class="p-3 bg-emerald-50 rounded-xl mr-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-emerald-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
-                            <circle cx="12" cy="7" r="4"></circle>
-                        </svg>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-white p-8 rounded-[1.5rem] shadow-sm border border-gray-100 flex items-start space-x-6">
+                    <div class="bg-violet-100 p-4 rounded-2xl text-violet-600">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
                     </div>
-                    <h2 class="text-2xl font-bold text-gray-800">Chess.com</h2>
+                    <div>
+                        <h3 class="font-bold text-xl mb-2">Grandmaster Chess</h3>
+                        <p class="text-gray-500 text-sm mb-4">Thử thách trí tuệ với phiên bản cờ vua dành cho chuyên gia.</p>
+                        <button onclick="showSection('play-learn')" class="text-blue-600 font-bold text-sm hover:underline">Khám phá →</button>
+                    </div>
                 </div>
-                <p class="text-gray-600 mb-6 flex-grow">
-                    Cộng đồng cờ vua lớn nhất thế giới. Chơi trực tuyến và giải đố trí tuệ.
-                </p>
-                <a href="https://www.chess.com/" target="_blank" class="text-center px-6 py-3 bg-emerald-600 text-white font-bold rounded-xl hover:bg-emerald-700 transition">
-                    Chơi trên Chess.com
-                </a>
+                <div class="bg-white p-8 rounded-[1.5rem] shadow-sm border border-gray-100 flex items-start space-x-6">
+                    <div class="bg-blue-100 p-4 rounded-2xl text-blue-600">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-xl mb-2">Word Office</h3>
+                        <p class="text-gray-500 text-sm mb-4">Công cụ soạn thảo văn bản mạnh mẽ cho các bài tập trường lớp.</p>
+                        <button onclick="showSection('docs')" class="text-blue-600 font-bold text-sm hover:underline">Sử dụng ngay →</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: CHƠI & HỌC -->
+        <section id="section-play-learn" class="hidden section-fade">
+            <div class="mb-10">
+                <h2 class="text-3xl font-black text-gray-900 mb-2">Trung Tâm Trò Chơi & Học Tập</h2>
+                <p class="text-gray-500 font-medium">Lựa chọn các trò chơi giúp rèn luyện trí não và kỹ năng.</p>
             </div>
 
-            <!-- Word Office -->
-            <div class="app-card bg-white p-6 rounded-2xl shadow-xl flex flex-col h-full border-t-8 border-blue-600">
-                <div class="flex items-center mb-4">
-                    <div class="p-3 bg-blue-50 rounded-xl mr-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-blue-700" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                            <polyline points="14 2 14 8 20 8"></polyline>
-                            <line x1="16" y1="13" x2="8" y2="13"></line>
-                        </svg>
-                    </div>
-                    <h2 class="text-2xl font-bold text-gray-800">Word Office</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Grandmaster Chess -->
+                <div class="app-card bg-white p-6 rounded-3xl shadow-sm border-t-8 border-violet-600 flex flex-col">
+                    <span class="text-xs font-bold text-violet-600 uppercase tracking-widest mb-2">Cờ vua</span>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Grandmaster Chess</h3>
+                    <p class="text-gray-600 mb-6 flex-grow text-sm">Luyện tập tư duy cùng các đại kiện tướng hàng đầu.</p>
+                    <a href="https://grandmasterchess.lovable.app" target="_blank" class="text-center py-3 bg-violet-600 text-white font-bold rounded-2xl hover:bg-violet-700 transition shadow-lg shadow-violet-200">Bắt đầu chơi</a>
                 </div>
-                <p class="text-gray-600 mb-6 flex-grow">
-                    Công cụ soạn thảo văn bản chuyên nghiệp cho các bài tập của bạn.
-                </p>
-                <a href="https://quill-charm-maker.lovable.app" target="_blank" class="text-center px-6 py-3 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-700 transition">
-                    Mở tài liệu
-                </a>
+
+                <!-- Chess.com -->
+                <div class="app-card bg-white p-6 rounded-3xl shadow-sm border-t-8 border-emerald-500 flex flex-col">
+                    <span class="text-xs font-bold text-emerald-600 uppercase tracking-widest mb-2">Cộng đồng</span>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Chess.com</h3>
+                    <p class="text-gray-600 mb-6 flex-grow text-sm">Nền tảng cờ vua lớn nhất thế giới, đấu với bạn bè toàn cầu.</p>
+                    <a href="https://www.chess.com/" target="_blank" class="text-center py-3 bg-emerald-600 text-white font-bold rounded-2xl hover:bg-emerald-700 transition shadow-lg shadow-emerald-200">Vào thi đấu</a>
+                </div>
+
+                <!-- Khan Academy -->
+                <div class="app-card bg-white p-6 rounded-3xl shadow-sm border-t-8 border-lime-500 flex flex-col">
+                    <span class="text-xs font-bold text-lime-600 uppercase tracking-widest mb-2">Học tập</span>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Khan Academy</h3>
+                    <p class="text-gray-600 mb-6 flex-grow text-sm">Học lập trình HTML/CSS và các môn khoa học miễn phí.</p>
+                    <a href="https://www.khanacademy.org/" target="_blank" class="text-center py-3 bg-lime-600 text-white font-bold rounded-2xl hover:bg-lime-700 transition shadow-lg shadow-lime-200">Học lập trình</a>
+                </div>
+
+                <!-- Speak Buddy -->
+                <div class="app-card bg-white p-6 rounded-3xl shadow-sm border-t-8 border-rose-500 flex flex-col">
+                    <span class="text-xs font-bold text-rose-600 uppercase tracking-widest mb-2">Ngôn ngữ</span>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Speak Buddy</h3>
+                    <p class="text-gray-600 mb-6 flex-grow text-sm">Gia sư Tiếng Anh giúp bạn luyện giao tiếp trôi chảy hơn.</p>
+                    <a href="https://my-speak-buddy.lovable.app" target="_blank" class="text-center py-3 bg-rose-500 text-white font-bold rounded-2xl hover:bg-rose-600 transition shadow-lg shadow-rose-200">Học giao tiếp</a>
+                </div>
+
+                <!-- Solar System Maths -->
+                <div class="app-card bg-white p-6 rounded-3xl shadow-sm border-t-8 border-amber-400 flex flex-col">
+                    <span class="text-xs font-bold text-amber-600 uppercase tracking-widest mb-2">Toán học</span>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Toán học Vũ trụ</h3>
+                    <p class="text-gray-600 mb-6 flex-grow text-sm">Bảo vệ hành tinh bằng cách giải các bài toán lý thú.</p>
+                    <a href="https://juneminhquan.github.io/game-solar-system-maths/" target="_blank" class="text-center py-3 bg-amber-500 text-white font-bold rounded-2xl hover:bg-amber-600 transition shadow-lg shadow-amber-200">Cứu hành tinh</a>
+                </div>
+
+                <!-- Global Room -->
+                <div class="app-card bg-white p-6 rounded-3xl shadow-sm border-t-8 border-orange-500 flex flex-col">
+                    <span class="text-xs font-bold text-orange-600 uppercase tracking-widest mb-2">Kỹ năng</span>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Global Room</h3>
+                    <p class="text-gray-600 mb-6 flex-grow text-sm">Thi đấu gõ phím nhanh với bạn bè bốn phương.</p>
+                    <a href="https://juneminhquan.github.io/global-room/" target="_blank" class="text-center py-3 bg-orange-600 text-white font-bold rounded-2xl hover:bg-orange-700 transition shadow-lg shadow-orange-200">Đua tốc độ</a>
+                </div>
+
+                <!-- Xiangqi Computer -->
+                <div class="app-card bg-white p-6 rounded-3xl shadow-sm border-t-8 border-red-600 flex flex-col">
+                    <span class="text-xs font-bold text-red-600 uppercase tracking-widest mb-2">Cờ tướng</span>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Cờ Tướng Xiangqi</h3>
+                    <p class="text-gray-600 mb-6 flex-grow text-sm">Luyện cờ tướng với máy tính ở nhiều cấp độ khó.</p>
+                    <a href="https://play.xiangqi.com/computer" target="_blank" class="text-center py-3 bg-red-600 text-white font-bold rounded-2xl hover:bg-red-700 transition shadow-lg shadow-red-200">Đấu với máy</a>
+                </div>
+
+                <!-- Co Tuong June -->
+                <div class="app-card bg-white p-6 rounded-3xl shadow-sm border-t-8 border-red-800 flex flex-col">
+                    <span class="text-xs font-bold text-red-800 uppercase tracking-widest mb-2">Cờ tướng</span>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Cờ Tướng June</h3>
+                    <p class="text-gray-600 mb-6 flex-grow text-sm">Khám phá nét đẹp cờ tướng truyền thống Việt Nam.</p>
+                    <a href="https://juneminhquan.github.io/co-tuong/" target="_blank" class="text-center py-3 bg-red-800 text-white font-bold rounded-2xl hover:bg-red-900 transition shadow-lg shadow-red-300">Mở cờ tướng</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: TÀI LIỆU -->
+        <section id="section-docs" class="hidden section-fade">
+            <div class="mb-10">
+                <h2 class="text-3xl font-black text-gray-900 mb-2">Thư Viện Tài Liệu</h2>
+                <p class="text-gray-500 font-medium">Các công cụ hỗ trợ công việc và lưu trữ thông tin.</p>
             </div>
 
-            <!-- Xiangqi -->
-            <div class="app-card bg-white p-6 rounded-2xl shadow-xl flex flex-col h-full border-t-8 border-red-600">
-                <div class="flex items-center mb-4">
-                    <div class="p-3 bg-red-50 rounded-xl mr-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-red-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="12" cy="12" r="10"></circle>
-                            <path d="M12 6v6l4 2M16 12H8"></path>
-                        </svg>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Word Office -->
+                <div class="app-card bg-white p-8 rounded-3xl shadow-sm border border-gray-100 flex flex-col">
+                    <div class="w-14 h-14 bg-blue-100 rounded-2xl flex items-center justify-center text-blue-600 mb-6">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
                     </div>
-                    <h2 class="text-2xl font-bold text-gray-800">Xiangqi</h2>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Word Office</h3>
+                    <p class="text-gray-600 mb-8 flex-grow text-sm leading-relaxed">Công soạn thảo văn bản trực tuyến tiện lợi cho việc làm bài tập nhóm hoặc cá nhân.</p>
+                    <a href="https://quill-charm-maker.lovable.app" target="_blank" class="inline-flex items-center justify-center py-3 px-6 bg-blue-600 text-white font-bold rounded-2xl hover:bg-blue-700 transition">Sử dụng ngay</a>
                 </div>
-                <p class="text-gray-600 mb-6 flex-grow">
-                    Thử thách kỹ năng cờ tướng của bạn với máy tính ở nhiều cấp độ.
-                </p>
-                <a href="https://play.xiangqi.com/computer" target="_blank" class="text-center px-6 py-3 bg-red-600 text-white font-bold rounded-xl hover:bg-red-700 transition">
-                    Đấu với máy
-                </a>
-            </div>
 
-            <!-- June Chess -->
-            <div class="app-card bg-white p-6 rounded-2xl shadow-xl flex flex-col h-full border-t-8 border-sky-400">
-                <div class="flex items-center mb-4">
-                    <div class="p-3 bg-sky-50 rounded-xl mr-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-sky-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-                            <path d="M9 3v18M15 3v18M3 9h18M3 15h18"></path>
-                        </svg>
+                <!-- June Chess Classic -->
+                <div class="app-card bg-white p-8 rounded-3xl shadow-sm border border-gray-100 flex flex-col">
+                    <div class="w-14 h-14 bg-sky-100 rounded-2xl flex items-center justify-center text-sky-600 mb-6">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
                     </div>
-                    <h2 class="text-2xl font-bold text-gray-800">June Chess</h2>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Học liệu June Chess</h3>
+                    <p class="text-gray-600 mb-8 flex-grow text-sm leading-relaxed">Tài liệu tham khảo về các nước đi cờ vua cơ bản và nâng cao từ phiên bản cũ.</p>
+                    <a href="https://juneminhquan.github.io/June-chess-game/" target="_blank" class="inline-flex items-center justify-center py-3 px-6 bg-sky-500 text-white font-bold rounded-2xl hover:bg-sky-600 transition">Xem tài liệu</a>
                 </div>
-                <p class="text-gray-600 mb-6 flex-grow">
-                    Rèn luyện tư duy chiến thuật qua bộ môn cờ vua nguyên bản.
-                </p>
-                <a href="https://juneminhquan.github.io/June-chess-game/" target="_blank" class="text-center px-6 py-3 bg-sky-500 text-white font-bold rounded-xl hover:bg-sky-600 transition">
-                    Chơi June Chess
-                </a>
             </div>
+        </section>
 
-            <!-- Gia sư Tiếng Anh -->
-            <div class="app-card bg-white p-6 rounded-2xl shadow-xl flex flex-col h-full border-t-8 border-rose-500">
-                <div class="flex items-center mb-4">
-                    <div class="p-3 bg-rose-50 rounded-xl mr-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-rose-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
-                            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
-                        </svg>
-                    </div>
-                    <h2 class="text-2xl font-bold text-gray-800">Gia sư Tiếng Anh</h2>
-                </div>
-                <p class="text-gray-600 mb-6 flex-grow">
-                    Nâng cao khả năng ngoại ngữ một cách tự nhiên và vui vẻ.
-                </p>
-                <a href="https://my-speak-buddy.lovable.app" target="_blank" class="text-center px-6 py-3 bg-rose-500 text-white font-bold rounded-xl hover:bg-rose-600 transition">
-                    Học Tiếng Anh
-                </a>
-            </div>
-
-            <!-- Giải cứu hành tinh -->
-            <div class="app-card bg-white p-6 rounded-2xl shadow-xl flex flex-col h-full border-t-8 border-amber-400">
-                <div class="flex items-center mb-4">
-                    <div class="p-3 bg-amber-50 rounded-xl mr-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-amber-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="12" cy="12" r="10"></circle>
-                            <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20M2 12h20"></path>
-                        </svg>
-                    </div>
-                    <h2 class="text-2xl font-bold text-gray-800">Giải cứu hành tinh</h2>
-                </div>
-                <p class="text-gray-600 mb-6 flex-grow">
-                    Vừa chơi vừa học toán bảo vệ vũ trụ khỏi rắc rối số học.
-                </p>
-                <a href="https://juneminhquan.github.io/game-solar-system-maths/" target="_blank" class="text-center px-6 py-3 bg-amber-500 text-white font-bold rounded-xl hover:bg-amber-600 transition">
-                    Chơi Toán Học
-                </a>
-            </div>
-
-            <!-- Thi đua gõ phím -->
-            <div class="app-card bg-white p-6 rounded-2xl shadow-xl flex flex-col h-full border-t-8 border-orange-500">
-                <div class="flex items-center mb-4">
-                    <div class="p-3 bg-orange-50 rounded-xl mr-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-orange-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect>
-                            <path d="M7 16h10M6 8h.01M10 8h.01M14 8h.01M18 8h.01"></path>
-                        </svg>
-                    </div>
-                    <h2 class="text-2xl font-bold text-gray-800">Thi đua gõ phím</h2>
-                </div>
-                <p class="text-gray-600 mb-6 flex-grow">
-                    Rèn luyện kỹ năng đánh máy siêu tốc cùng bạn bè.
-                </p>
-                <a href="https://juneminhquan.github.io/global-room/" target="_blank" class="text-center px-6 py-3 bg-orange-600 text-white font-bold rounded-xl hover:bg-orange-700 transition">
-                    Đua Tốc Độ
-                </a>
-            </div>
-
-            <!-- Cờ Tướng June -->
-            <div class="app-card bg-white p-6 rounded-2xl shadow-xl flex flex-col h-full border-t-8 border-red-700">
-                <div class="flex items-center mb-4">
-                    <div class="p-3 bg-red-50 rounded-xl mr-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-red-800" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="12" cy="12" r="10"></circle>
-                            <path d="M12 8v8M8 12h8"></path>
-                        </svg>
-                    </div>
-                    <h2 class="text-2xl font-bold text-gray-800">Cờ Tướng June</h2>
-                </div>
-                <p class="text-gray-600 mb-6 flex-grow">
-                    Khám phá nét đẹp trí tuệ truyền thống qua cờ tướng.
-                </p>
-                <a href="https://juneminhquan.github.io/co-tuong/" target="_blank" class="text-center px-6 py-3 bg-red-700 text-white font-bold rounded-xl hover:bg-red-800 transition">
-                    Chơi Cờ Tướng
-                </a>
-            </div>
-
-        </div>
     </main>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-10 mt-12">
-        <div class="container mx-auto px-4 text-center">
-            <p class="text-lg font-semibold mb-2">Góc Trí Tuệ của June</p>
-            <p class="text-sm opacity-60">An toàn - Lành mạnh - Bổ ích</p>
+    <footer class="bg-white border-t border-gray-100 py-10">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+                <div class="flex items-center space-x-2">
+                    <div class="w-8 h-8 bg-blue-700 rounded-lg flex items-center justify-center text-white font-bold text-xs shadow-sm">J</div>
+                    <span class="text-gray-900 font-bold tracking-tight">JUNE ACADEMY</span>
+                </div>
+                <p class="text-gray-400 text-sm">© 2026 Nội dung dành cho học sinh. An toàn & Lành mạnh.</p>
+            </div>
         </div>
     </footer>
 
-    <!-- Script cho PWA Service Worker & Install Logic -->
+    <!-- Scripts -->
     <script>
+        function showSection(sectionId) {
+            const sections = ['home', 'play-learn', 'docs'];
+            sections.forEach(s => {
+                document.getElementById('section-' + s).classList.add('hidden');
+                document.getElementById('btn-' + s).classList.remove('active');
+            });
+
+            document.getElementById('section-' + sectionId).classList.remove('hidden');
+            document.getElementById('btn-' + sectionId).classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // PWA Setup
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
                 const swCode = `
@@ -269,26 +257,22 @@
                 `;
                 const blob = new Blob([swCode], { type: 'application/javascript' });
                 const swUrl = URL.createObjectURL(blob);
-                navigator.serviceWorker.register(swUrl).catch(err => console.log('SW registration failed'));
+                navigator.serviceWorker.register(swUrl).catch(() => {});
             });
         }
 
         let deferredPrompt;
         const installBtn = document.getElementById('installBtn');
-
         window.addEventListener('beforeinstallprompt', (e) => {
             e.preventDefault();
             deferredPrompt = e;
             installBtn.classList.remove('hidden');
         });
-
         installBtn.addEventListener('click', async () => {
             if (deferredPrompt) {
                 deferredPrompt.prompt();
                 const { outcome } = await deferredPrompt.userChoice;
-                if (outcome === 'accepted') {
-                    installBtn.classList.add('hidden');
-                }
+                if (outcome === 'accepted') installBtn.classList.add('hidden');
                 deferredPrompt = null;
             }
         });
