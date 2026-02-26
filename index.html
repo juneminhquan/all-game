@@ -12,7 +12,7 @@
     <meta name="apple-mobile-web-app-title" content="Góc June">
     
     <!-- Web App Manifest (Inline) -->
-    <link rel="manifest" href="data:application/json;base64,ewogICJuYW1lIjogIkfDs2MgVHLDrSBUdeG7hyBj4bunYSBKdW5lIiwKICAic2hvcnRfbmFtZSI6ICJKdW5lR2FtZSIsCiAgInN0YXJ0X3VybCI6ICIuIiwKICAiZGlzcGxheSI6ICJzdGFuZGFsb25lIiwKICAiYmFja2dyb3VuZF9jb2xvciI6ICIjZjhmYWZjIiwKICAidGhlbWVfY29sb3IiOiAiIzFlNDBhZiIsCiAgImljb25zIjogWwogICAgewogICAgICAic3JjIjogImh0dHBzOi8vY2RuLWljb25zLXBuZy5mbGF0aWNvbi5jb20vNTEyLzM5NzYvMzk3NjYyNS5wbmciLAogICAgICAic2l6ZXMiOiAiNTEyeDUxMiIsCiAgICAgICJ0eXBlIjogImltYWdlL3BuZyIKICAgIH0KICBdCn0=">
+    <link rel="manifest" href="data:application/json;base64,ewogICJuYW1lIjogIkfDs2MgVHLDrSBUdeG7hyBj4bunYSBKdW5lIiwKICAic2hvcnRfbmFtZSI6ICJKdW5lR2FtZSIsCiAgInN0YXJ0X3VybCI6ICIuIiwKICAiaXNwbGF5IjogInN0YW5kYWxvbmUiLAogICJiYWNrZ3JvdW5kX2NvbG9yIjogIiNmOGZhZmMiLAogICJ0aGVtZV9jb2xvciI6ICIjMWU0MGFmIiwKICAiaWNvbnMiOiBbCiAgICB7CiAgICAgICJzcmMiOiAiaHR0cHM6Ly9jZG4taWNvbnMtcG5nLmZsYXRpY29uLmNvbS81MTIvMzk3Ni8zOTc2NjI1LnBuZyIsCiAgICAgICJzaXplcyI6ICI1MTJ4NTEyIiwKICAgICAgInR5cGUiOiAiaW1hZ2UvcG5nIgogICAgfQogIF0KfQ==">
 
     <!-- Tải Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -22,6 +22,7 @@
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f8fafc;
+            overflow-x: hidden;
         }
         .nav-link {
             transition: all 0.3s ease;
@@ -31,6 +32,10 @@
             background-color: #1e40af;
             color: white;
         }
+        /* Mode-specific active nav states */
+        .mode-pro-max .nav-link.active { background-color: #ea580c; }
+        .mode-vip-pro .nav-link.active { background-color: #7c3aed; }
+
         .section-fade {
             animation: fadeIn 0.4s ease-out;
         }
@@ -45,237 +50,274 @@
             transform: translateY(-5px);
             box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.15);
         }
+        .mode-option {
+            transition: all 0.3s ease;
+        }
+        .mode-option:hover {
+            transform: scale(1.05);
+        }
     </style>
 </head>
 <body class="min-h-screen flex flex-col">
 
-    <!-- Navigation -->
-    <nav class="bg-white shadow-sm border-b border-gray-100 sticky top-0 z-50">
-        <div class="container mx-auto px-4">
-            <div class="flex justify-between items-center py-4">
-                <div class="flex items-center space-x-2">
-                    <div class="w-10 h-10 bg-blue-700 rounded-xl flex items-center justify-center text-white font-bold shadow-inner">J</div>
-                    <span class="text-xl font-black text-blue-900 tracking-tight hidden sm:inline">JUNE ACADEMY</span>
-                </div>
-                <div class="flex bg-gray-100 p-1 rounded-xl space-x-1">
-                    <button onclick="showSection('home')" id="btn-home" class="nav-link px-4 py-2 rounded-lg text-gray-600 font-semibold text-sm active">Trang Chủ</button>
-                    <button onclick="showSection('play-learn')" id="btn-play-learn" class="nav-link px-4 py-2 rounded-lg text-gray-600 font-semibold text-sm">Chơi & Học</button>
-                    <button onclick="showSection('docs')" id="btn-docs" class="nav-link px-4 py-2 rounded-lg text-gray-600 font-semibold text-sm">Tài Liệu</button>
-                </div>
+    <!-- OVERLAY: CHỌN CHẾ ĐỘ -->
+    <div id="mode-selector" class="fixed inset-0 z-[100] bg-slate-900 flex items-center justify-center p-4">
+        <div class="max-w-4xl w-full text-center">
+            <h1 class="text-3xl sm:text-5xl font-black text-white mb-4 italic tracking-tighter">JUNE ACADEMY</h1>
+            <p class="text-blue-300 mb-12 text-lg">Chào mừng bạn! Hãy chọn chế độ trải nghiệm của bạn:</p>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                <!-- Chế độ Bình Thường -->
+                <button onclick="selectMode('Bình thường')" class="mode-option bg-white/5 border border-white/10 p-8 rounded-[2rem] hover:bg-white/10 group">
+                    <div class="w-16 h-16 bg-slate-700 rounded-2xl mx-auto mb-4 flex items-center justify-center text-white group-hover:bg-blue-500 transition-colors">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-white">Bình thường</h3>
+                    <p class="text-slate-400 text-sm mt-2 font-medium">Trải nghiệm tiêu chuẩn</p>
+                </button>
+
+                <!-- Chế độ Pro Max (Màu cam vàng) -->
+                <button onclick="selectMode('Pro Max')" class="mode-option bg-gradient-to-br from-orange-500/20 to-orange-900/40 border border-orange-500/30 p-8 rounded-[2rem] hover:from-orange-600/30 hover:to-orange-900/50 group relative overflow-hidden">
+                    <div class="absolute top-0 right-0 p-2"><span class="bg-orange-500 text-[10px] text-white font-bold px-2 py-1 rounded-full uppercase">Hot</span></div>
+                    <div class="w-16 h-16 bg-orange-600 rounded-2xl mx-auto mb-4 flex items-center justify-center text-white shadow-lg shadow-orange-500/20">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-white">Pro Max</h3>
+                    <p class="text-orange-300 text-sm mt-2 font-medium">Sang trọng & Mạnh mẽ</p>
+                </button>
+
+                <!-- Chế độ Vip Pro -->
+                <button onclick="selectMode('Vip Pro')" class="mode-option bg-gradient-to-br from-amber-500/10 to-violet-900/40 border border-amber-500/30 p-8 rounded-[2rem] hover:from-amber-500/20 hover:to-violet-900/50 group relative">
+                    <div class="w-16 h-16 bg-gradient-to-tr from-amber-400 to-violet-600 rounded-2xl mx-auto mb-4 flex items-center justify-center text-white shadow-lg shadow-amber-500/20">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-white tracking-wide">Vip Pro</h3>
+                    <p class="text-amber-200 text-sm mt-2 font-medium">Đẳng cấp tối thượng</p>
+                </button>
             </div>
         </div>
-    </nav>
+    </div>
 
-    <!-- Content -->
-    <main class="flex-grow container mx-auto px-4 py-8">
-
-        <!-- SECTION: TRANG CHỦ -->
-        <section id="section-home" class="section-fade">
-            <div class="bg-gradient-to-br from-blue-800 to-indigo-600 rounded-[2rem] p-8 sm:p-16 text-white mb-12 shadow-2xl relative overflow-hidden">
-                <div class="relative z-10 max-w-2xl">
-                    <h1 class="text-4xl sm:text-6xl font-black mb-6 leading-tight">Khám phá tiềm năng của bạn</h1>
-                    <p class="text-lg sm:text-xl opacity-90 mb-10 font-medium leading-relaxed">
-                        Chào mừng đến với không gian học tập và giải trí an toàn. Hãy chọn một chuyên mục phía trên để bắt đầu hành trình của mình!
-                    </p>
-                    <div class="flex flex-wrap gap-4">
-                        <button onclick="showSection('play-learn')" class="bg-white text-blue-800 px-8 py-4 rounded-2xl font-bold hover:shadow-xl transition-all active:scale-95">Chơi & Học ngay</button>
-                        <button id="installBtn" class="hidden bg-blue-700/50 backdrop-blur-sm border border-blue-400 text-white px-8 py-4 rounded-2xl font-bold hover:bg-blue-700/80 transition-all">Tải ứng dụng</button>
+    <!-- MAIN APP CONTENT -->
+    <div id="main-app" class="hidden flex flex-col min-h-screen">
+        <!-- Navigation -->
+        <nav class="bg-white shadow-sm border-b border-gray-100 sticky top-0 z-50">
+            <div class="container mx-auto px-4">
+                <div class="flex justify-between items-center py-4">
+                    <div class="flex items-center space-x-2">
+                        <div id="nav-logo" class="w-10 h-10 bg-blue-700 rounded-xl flex items-center justify-center text-white font-bold shadow-inner transition-all duration-500">J</div>
+                        <span class="text-xl font-black text-blue-900 tracking-tight hidden sm:inline">JUNE ACADEMY</span>
                     </div>
-                </div>
-                <!-- Trang trí -->
-                <div class="absolute -right-20 -bottom-20 w-80 h-80 bg-white/10 rounded-full blur-3xl"></div>
-            </div>
-
-            <div class="flex items-center space-x-3 mb-8">
-                <div class="h-8 w-2 bg-blue-700 rounded-full"></div>
-                <h2 class="text-2xl font-bold text-gray-800 tracking-tight">Gợi ý dành cho bạn</h2>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="bg-white p-8 rounded-[1.5rem] shadow-sm border border-gray-100 flex items-start space-x-6">
-                    <div class="bg-violet-100 p-4 rounded-2xl text-violet-600">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
-                    </div>
-                    <div>
-                        <h3 class="font-bold text-xl mb-2">Grandmaster Chess</h3>
-                        <p class="text-gray-500 text-sm mb-4">Thử thách trí tuệ với phiên bản cờ vua dành cho chuyên gia.</p>
-                        <button onclick="showSection('play-learn')" class="text-blue-600 font-bold text-sm hover:underline">Khám phá →</button>
-                    </div>
-                </div>
-                <div class="bg-white p-8 rounded-[1.5rem] shadow-sm border border-gray-100 flex items-start space-x-6">
-                    <div class="bg-blue-100 p-4 rounded-2xl text-blue-600">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
-                    </div>
-                    <div>
-                        <h3 class="font-bold text-xl mb-2">Word Office</h3>
-                        <p class="text-gray-500 text-sm mb-4">Công cụ soạn thảo văn bản mạnh mẽ cho các bài tập trường lớp.</p>
-                        <button onclick="showSection('docs')" class="text-blue-600 font-bold text-sm hover:underline">Sử dụng ngay →</button>
+                    <div class="flex items-center space-x-4">
+                        <div class="flex bg-gray-100 p-1 rounded-xl space-x-1">
+                            <button onclick="showSection('home')" id="btn-home" class="nav-link px-4 py-2 rounded-lg text-gray-600 font-semibold text-sm active">Trang Chủ</button>
+                            <button onclick="showSection('play-learn')" id="btn-play-learn" class="nav-link px-4 py-2 rounded-lg text-gray-600 font-semibold text-sm">Chơi & Học</button>
+                            <button onclick="showSection('docs')" id="btn-docs" class="nav-link px-4 py-2 rounded-lg text-gray-600 font-semibold text-sm">Tài Liệu</button>
+                        </div>
+                        <div id="user-badge" class="hidden sm:flex items-center bg-blue-50 px-3 py-1 rounded-full border border-blue-100">
+                            <span id="display-mode" class="text-[10px] font-bold text-blue-600 uppercase tracking-tighter">Mode</span>
+                        </div>
                     </div>
                 </div>
             </div>
-        </section>
+        </nav>
 
-        <!-- SECTION: CHƠI & HỌC -->
-        <section id="section-play-learn" class="hidden section-fade">
-            <div class="mb-10">
-                <h2 class="text-3xl font-black text-gray-900 mb-2">Trung Tâm Trò Chơi & Học Tập</h2>
-                <p class="text-gray-500 font-medium">Lựa chọn các trò chơi giúp rèn luyện trí não và kỹ năng.</p>
-            </div>
+        <!-- Content -->
+        <main class="flex-grow container mx-auto px-4 py-8">
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Grandmaster Chess -->
-                <div class="app-card bg-white p-6 rounded-3xl shadow-sm border-t-8 border-violet-600 flex flex-col">
-                    <span class="text-xs font-bold text-violet-600 uppercase tracking-widest mb-2">Cờ vua</span>
-                    <h3 class="text-xl font-bold text-gray-800 mb-2">Grandmaster Chess</h3>
-                    <p class="text-gray-600 mb-6 flex-grow text-sm">Luyện tập tư duy cùng các đại kiện tướng hàng đầu.</p>
-                    <a href="https://grandmasterchess.lovable.app" target="_blank" class="text-center py-3 bg-violet-600 text-white font-bold rounded-2xl hover:bg-violet-700 transition shadow-lg shadow-violet-200">Bắt đầu chơi</a>
-                </div>
-
-                <!-- Chess.com -->
-                <div class="app-card bg-white p-6 rounded-3xl shadow-sm border-t-8 border-emerald-500 flex flex-col">
-                    <span class="text-xs font-bold text-emerald-600 uppercase tracking-widest mb-2">Cộng đồng</span>
-                    <h3 class="text-xl font-bold text-gray-800 mb-2">Chess.com</h3>
-                    <p class="text-gray-600 mb-6 flex-grow text-sm">Nền tảng cờ vua lớn nhất thế giới, đấu với bạn bè toàn cầu.</p>
-                    <a href="https://www.chess.com/" target="_blank" class="text-center py-3 bg-emerald-600 text-white font-bold rounded-2xl hover:bg-emerald-700 transition shadow-lg shadow-emerald-200">Vào thi đấu</a>
-                </div>
-
-                <!-- Khan Academy -->
-                <div class="app-card bg-white p-6 rounded-3xl shadow-sm border-t-8 border-lime-500 flex flex-col">
-                    <span class="text-xs font-bold text-lime-600 uppercase tracking-widest mb-2">Học tập</span>
-                    <h3 class="text-xl font-bold text-gray-800 mb-2">Khan Academy</h3>
-                    <p class="text-gray-600 mb-6 flex-grow text-sm">Học lập trình HTML/CSS và các môn khoa học miễn phí.</p>
-                    <a href="https://www.khanacademy.org/" target="_blank" class="text-center py-3 bg-lime-600 text-white font-bold rounded-2xl hover:bg-lime-700 transition shadow-lg shadow-lime-200">Học lập trình</a>
-                </div>
-
-                <!-- Speak Buddy -->
-                <div class="app-card bg-white p-6 rounded-3xl shadow-sm border-t-8 border-rose-500 flex flex-col">
-                    <span class="text-xs font-bold text-rose-600 uppercase tracking-widest mb-2">Ngôn ngữ</span>
-                    <h3 class="text-xl font-bold text-gray-800 mb-2">Speak Buddy</h3>
-                    <p class="text-gray-600 mb-6 flex-grow text-sm">Gia sư Tiếng Anh giúp bạn luyện giao tiếp trôi chảy hơn.</p>
-                    <a href="https://my-speak-buddy.lovable.app" target="_blank" class="text-center py-3 bg-rose-500 text-white font-bold rounded-2xl hover:bg-rose-600 transition shadow-lg shadow-rose-200">Học giao tiếp</a>
-                </div>
-
-                <!-- Solar System Maths -->
-                <div class="app-card bg-white p-6 rounded-3xl shadow-sm border-t-8 border-amber-400 flex flex-col">
-                    <span class="text-xs font-bold text-amber-600 uppercase tracking-widest mb-2">Toán học</span>
-                    <h3 class="text-xl font-bold text-gray-800 mb-2">Toán học Vũ trụ</h3>
-                    <p class="text-gray-600 mb-6 flex-grow text-sm">Bảo vệ hành tinh bằng cách giải các bài toán lý thú.</p>
-                    <a href="https://juneminhquan.github.io/game-solar-system-maths/" target="_blank" class="text-center py-3 bg-amber-500 text-white font-bold rounded-2xl hover:bg-amber-600 transition shadow-lg shadow-amber-200">Cứu hành tinh</a>
-                </div>
-
-                <!-- Global Room -->
-                <div class="app-card bg-white p-6 rounded-3xl shadow-sm border-t-8 border-orange-500 flex flex-col">
-                    <span class="text-xs font-bold text-orange-600 uppercase tracking-widest mb-2">Kỹ năng</span>
-                    <h3 class="text-xl font-bold text-gray-800 mb-2">Global Room</h3>
-                    <p class="text-gray-600 mb-6 flex-grow text-sm">Thi đấu gõ phím nhanh với bạn bè bốn phương.</p>
-                    <a href="https://juneminhquan.github.io/global-room/" target="_blank" class="text-center py-3 bg-orange-600 text-white font-bold rounded-2xl hover:bg-orange-700 transition shadow-lg shadow-orange-200">Đua tốc độ</a>
-                </div>
-
-                <!-- Xiangqi Computer -->
-                <div class="app-card bg-white p-6 rounded-3xl shadow-sm border-t-8 border-red-600 flex flex-col">
-                    <span class="text-xs font-bold text-red-600 uppercase tracking-widest mb-2">Cờ tướng</span>
-                    <h3 class="text-xl font-bold text-gray-800 mb-2">Cờ Tướng Xiangqi</h3>
-                    <p class="text-gray-600 mb-6 flex-grow text-sm">Luyện cờ tướng với máy tính ở nhiều cấp độ khó.</p>
-                    <a href="https://play.xiangqi.com/computer" target="_blank" class="text-center py-3 bg-red-600 text-white font-bold rounded-2xl hover:bg-red-700 transition shadow-lg shadow-red-200">Đấu với máy</a>
-                </div>
-
-                <!-- Co Tuong June -->
-                <div class="app-card bg-white p-6 rounded-3xl shadow-sm border-t-8 border-red-800 flex flex-col">
-                    <span class="text-xs font-bold text-red-800 uppercase tracking-widest mb-2">Cờ tướng</span>
-                    <h3 class="text-xl font-bold text-gray-800 mb-2">Cờ Tướng June</h3>
-                    <p class="text-gray-600 mb-6 flex-grow text-sm">Khám phá nét đẹp cờ tướng truyền thống Việt Nam.</p>
-                    <a href="https://juneminhquan.github.io/co-tuong/" target="_blank" class="text-center py-3 bg-red-800 text-white font-bold rounded-2xl hover:bg-red-900 transition shadow-lg shadow-red-300">Mở cờ tướng</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- SECTION: TÀI LIỆU -->
-        <section id="section-docs" class="hidden section-fade">
-            <div class="mb-10">
-                <h2 class="text-3xl font-black text-gray-900 mb-2">Thư Viện Tài Liệu</h2>
-                <p class="text-gray-500 font-medium">Các công cụ hỗ trợ công việc và lưu trữ thông tin.</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Word Office -->
-                <div class="app-card bg-white p-8 rounded-3xl shadow-sm border border-gray-100 flex flex-col">
-                    <div class="w-14 h-14 bg-blue-100 rounded-2xl flex items-center justify-center text-blue-600 mb-6">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+            <!-- SECTION: TRANG CHỦ -->
+            <section id="section-home" class="section-fade">
+                <div id="hero-banner" class="bg-gradient-to-br from-blue-800 to-indigo-600 rounded-[2rem] p-8 sm:p-16 text-white mb-12 shadow-2xl relative overflow-hidden transition-all duration-700">
+                    <div class="relative z-10 max-w-2xl">
+                        <div id="welcome-badge" class="inline-block bg-white/20 backdrop-blur-md px-4 py-1 rounded-full text-xs font-bold mb-4 uppercase tracking-widest">Chào mừng thành viên mới</div>
+                        <h1 id="hero-title" class="text-4xl sm:text-6xl font-black mb-6 leading-tight">Khám phá tiềm năng của bạn</h1>
+                        <p class="text-lg sm:text-xl opacity-90 mb-10 font-medium leading-relaxed">
+                            Chào mừng đến với không gian học tập và giải trí an toàn. Hãy chọn một chuyên mục phía trên để bắt đầu hành trình của mình!
+                        </p>
+                        <div class="flex flex-wrap gap-4">
+                            <button onclick="showSection('play-learn')" id="hero-cta" class="bg-white text-blue-800 px-8 py-4 rounded-2xl font-bold hover:shadow-xl transition-all active:scale-95">Chơi & Học ngay</button>
+                        </div>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-3">Word Office</h3>
-                    <p class="text-gray-600 mb-8 flex-grow text-sm leading-relaxed">Công soạn thảo văn bản trực tuyến tiện lợi cho việc làm bài tập nhóm hoặc cá nhân.</p>
-                    <a href="https://quill-charm-maker.lovable.app" target="_blank" class="inline-flex items-center justify-center py-3 px-6 bg-blue-600 text-white font-bold rounded-2xl hover:bg-blue-700 transition">Sử dụng ngay</a>
+                    <div class="absolute -right-20 -bottom-20 w-80 h-80 bg-white/10 rounded-full blur-3xl"></div>
                 </div>
 
-                <!-- June Chess Classic -->
-                <div class="app-card bg-white p-8 rounded-3xl shadow-sm border border-gray-100 flex flex-col">
-                    <div class="w-14 h-14 bg-sky-100 rounded-2xl flex items-center justify-center text-sky-600 mb-6">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                <div class="flex items-center space-x-3 mb-8">
+                    <div id="accent-bar" class="h-8 w-2 bg-blue-700 rounded-full"></div>
+                    <h2 class="text-2xl font-bold text-gray-800 tracking-tight">Gợi ý dành cho bạn</h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-white p-8 rounded-[1.5rem] shadow-sm border border-gray-100 flex items-start space-x-6">
+                        <div class="bg-violet-100 p-4 rounded-2xl text-violet-600">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-xl mb-2">Grandmaster Chess</h3>
+                            <p class="text-gray-500 text-sm mb-4">Thử thách trí tuệ với phiên bản cờ vua dành cho chuyên gia.</p>
+                            <button onclick="showSection('play-learn')" class="text-blue-600 font-bold text-sm hover:underline">Khám phá →</button>
+                        </div>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-3">Học liệu June Chess</h3>
-                    <p class="text-gray-600 mb-8 flex-grow text-sm leading-relaxed">Tài liệu tham khảo về các nước đi cờ vua cơ bản và nâng cao từ phiên bản cũ.</p>
-                    <a href="https://juneminhquan.github.io/June-chess-game/" target="_blank" class="inline-flex items-center justify-center py-3 px-6 bg-sky-500 text-white font-bold rounded-2xl hover:bg-sky-600 transition">Xem tài liệu</a>
+                    <div class="bg-white p-8 rounded-[1.5rem] shadow-sm border border-gray-100 flex items-start space-x-6">
+                        <div class="bg-blue-100 p-4 rounded-2xl text-blue-600">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-xl mb-2">Word Office</h3>
+                            <p class="text-gray-500 text-sm mb-4">Công cụ soạn thảo văn bản mạnh mẽ cho các bài tập trường lớp.</p>
+                            <button onclick="showSection('docs')" class="text-blue-600 font-bold text-sm hover:underline">Sử dụng ngay →</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION: CHƠI & HỌC -->
+            <section id="section-play-learn" class="hidden section-fade">
+                <div class="mb-10">
+                    <h2 class="text-3xl font-black text-gray-900 mb-2">Trung Tâm Trò Chơi & Học Tập</h2>
+                    <p class="text-gray-500 font-medium">Lựa chọn các trò chơi giúp rèn luyện trí não và kỹ năng.</p>
+                </div>
+
+                <div id="game-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Music App (Chỉ xuất hiện ở Vip Pro) -->
+                    <div id="card-music" class="hidden app-card bg-white p-6 rounded-3xl shadow-sm border-t-8 border-pink-500 flex flex-col">
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="text-xs font-bold text-pink-600 uppercase tracking-widest">Giải trí</span>
+                            <span class="bg-pink-100 text-pink-700 text-[10px] px-2 py-0.5 rounded-full font-bold">VIP ONLY</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Music App</h3>
+                        <p class="text-gray-600 mb-6 flex-grow text-sm font-medium">Thư giãn với những bản nhạc tuyển chọn chất lượng cao.</p>
+                        <a href="https://juneminhquan.github.io/music/" target="_blank" class="text-center py-3 bg-pink-500 text-white font-bold rounded-2xl hover:bg-pink-600 transition shadow-lg shadow-pink-100">Mở ứng dụng</a>
+                    </div>
+
+                    <!-- Grandmaster Chess -->
+                    <div class="app-card bg-white p-6 rounded-3xl shadow-sm border-t-8 border-violet-600 flex flex-col">
+                        <span class="text-xs font-bold text-violet-600 uppercase tracking-widest mb-2">Cờ vua</span>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Grandmaster Chess</h3>
+                        <p class="text-gray-600 mb-6 flex-grow text-sm">Luyện tập tư duy cùng các đại kiện tướng hàng đầu.</p>
+                        <a href="https://grandmasterchess.lovable.app" target="_blank" class="text-center py-3 bg-violet-600 text-white font-bold rounded-2xl hover:bg-violet-700 transition shadow-lg">Bắt đầu chơi</a>
+                    </div>
+
+                    <!-- Speak Buddy -->
+                    <div class="app-card bg-white p-6 rounded-3xl shadow-sm border-t-8 border-rose-500 flex flex-col">
+                        <span class="text-xs font-bold text-rose-600 uppercase tracking-widest mb-2">Ngôn ngữ</span>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Speak Buddy</h3>
+                        <p class="text-gray-600 mb-6 flex-grow text-sm">Gia sư Tiếng Anh luyện giao tiếp trôi chảy hơn.</p>
+                        <a href="https://my-speak-buddy.lovable.app" target="_blank" class="text-center py-3 bg-rose-500 text-white font-bold rounded-2xl hover:bg-rose-600 transition shadow-lg">Học giao tiếp</a>
+                    </div>
+
+                    <!-- Các game khác giữ nguyên -->
+                    <div class="app-card bg-white p-6 rounded-3xl shadow-sm border-t-8 border-emerald-500 flex flex-col">
+                        <span class="text-xs font-bold text-emerald-600 uppercase tracking-widest mb-2">Cộng đồng</span>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Chess.com</h3>
+                        <p class="text-gray-600 mb-6 flex-grow text-sm">Đấu với bạn bè toàn cầu.</p>
+                        <a href="https://www.chess.com/" target="_blank" class="text-center py-3 bg-emerald-600 text-white font-bold rounded-2xl hover:bg-emerald-700 transition shadow-lg">Vào thi đấu</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION: TÀI LIỆU -->
+            <section id="section-docs" class="hidden section-fade">
+                <div class="mb-10">
+                    <h2 class="text-3xl font-black text-gray-900 mb-2">Thư Viện Tài Liệu</h2>
+                    <p class="text-gray-500 font-medium">Các công cụ hỗ trợ công việc và lưu trữ thông tin.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="app-card bg-white p-8 rounded-3xl shadow-sm border border-gray-100 flex flex-col">
+                        <div class="w-14 h-14 bg-blue-100 rounded-2xl flex items-center justify-center text-blue-600 mb-6">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Word Office</h3>
+                        <p class="text-gray-600 mb-8 flex-grow text-sm leading-relaxed">Công soạn thảo văn bản trực tuyến tiện lợi.</p>
+                        <a href="https://quill-charm-maker.lovable.app" target="_blank" class="inline-flex items-center justify-center py-3 px-6 bg-blue-600 text-white font-bold rounded-2xl hover:bg-blue-700 transition">Sử dụng ngay</a>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="bg-white border-t border-gray-100 py-10 mt-auto">
+            <div class="container mx-auto px-4">
+                <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+                    <div class="flex items-center space-x-2">
+                        <div id="footer-logo" class="w-8 h-8 bg-blue-700 rounded-lg flex items-center justify-center text-white font-bold text-xs shadow-sm">J</div>
+                        <span class="text-gray-900 font-bold tracking-tight">JUNE ACADEMY</span>
+                    </div>
+                    <p class="text-gray-400 text-sm">© 2026 Nội dung dành cho học sinh. An toàn & Lành mạnh.</p>
                 </div>
             </div>
-        </section>
+        </footer>
+    </div>
 
-    </main>
-
-    <!-- Footer -->
-    <footer class="bg-white border-t border-gray-100 py-10">
-        <div class="container mx-auto px-4">
-            <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-                <div class="flex items-center space-x-2">
-                    <div class="w-8 h-8 bg-blue-700 rounded-lg flex items-center justify-center text-white font-bold text-xs shadow-sm">J</div>
-                    <span class="text-gray-900 font-bold tracking-tight">JUNE ACADEMY</span>
-                </div>
-                <p class="text-gray-400 text-sm">© 2026 Nội dung dành cho học sinh. An toàn & Lành mạnh.</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Scripts -->
     <script>
+        function selectMode(name) {
+            const modeSelector = document.getElementById('mode-selector');
+            const mainApp = document.getElementById('main-app');
+            const welcomeBadge = document.getElementById('welcome-badge');
+            const heroTitle = document.getElementById('hero-title');
+            const heroBanner = document.getElementById('hero-banner');
+            const accentBar = document.getElementById('accent-bar');
+            const navLogo = document.getElementById('nav-logo');
+            const footerLogo = document.getElementById('footer-logo');
+            const displayMode = document.getElementById('display-mode');
+            const heroCta = document.getElementById('hero-cta');
+            const musicCard = document.getElementById('card-music');
+
+            modeSelector.classList.add('hidden');
+            mainApp.classList.remove('hidden');
+
+            displayMode.innerText = name;
+            welcomeBadge.innerText = `Chế độ: ${name}`;
+            
+            // Reset classes
+            document.body.className = "min-h-screen flex flex-col";
+            heroBanner.className = "rounded-[2rem] p-8 sm:p-16 text-white mb-12 shadow-2xl relative overflow-hidden transition-all duration-700 bg-gradient-to-br ";
+            navLogo.className = "w-10 h-10 rounded-xl flex items-center justify-center text-white font-bold shadow-inner transition-all duration-500 ";
+
+            // Ẩn music app mặc định
+            musicCard.classList.add('hidden');
+
+            if (name === 'Vip Pro') {
+                document.body.classList.add('mode-vip-pro');
+                heroTitle.innerText = "Đẳng cấp trí tuệ thượng lưu";
+                heroBanner.classList.add('from-amber-500', 'to-violet-700');
+                accentBar.className = "h-8 w-2 bg-amber-500 rounded-full transition-all";
+                navLogo.classList.add('bg-gradient-to-tr', 'from-amber-400', 'to-violet-600');
+                footerLogo.className = "w-8 h-8 bg-amber-600 rounded-lg flex items-center justify-center text-white font-bold text-xs shadow-sm";
+                heroCta.className = "bg-white text-amber-700 px-8 py-4 rounded-2xl font-bold hover:shadow-xl transition-all active:scale-95";
+                
+                // Hiện Music App trong mục Vip Pro
+                musicCard.classList.remove('hidden');
+            } 
+            else if (name === 'Pro Max') {
+                document.body.classList.add('mode-pro-max');
+                heroTitle.innerText = "Trải nghiệm sức mạnh Pro Max";
+                heroBanner.classList.add('from-orange-500', 'to-orange-700');
+                accentBar.className = "h-8 w-2 bg-orange-600 rounded-full transition-all";
+                navLogo.classList.add('bg-orange-600');
+                footerLogo.className = "w-8 h-8 bg-orange-600 rounded-lg flex items-center justify-center text-white font-bold text-xs shadow-sm";
+                heroCta.className = "bg-white text-orange-700 px-8 py-4 rounded-2xl font-bold hover:shadow-xl transition-all active:scale-95";
+            } 
+            else {
+                heroTitle.innerText = "Khám phá tiềm năng của bạn";
+                heroBanner.classList.add('from-blue-700', 'to-indigo-600');
+                accentBar.className = "h-8 w-2 bg-blue-700 rounded-full transition-all";
+                navLogo.classList.add('bg-blue-700');
+                footerLogo.className = "w-8 h-8 bg-blue-700 rounded-lg flex items-center justify-center text-white font-bold text-xs shadow-sm";
+                heroCta.className = "bg-white text-blue-800 px-8 py-4 rounded-2xl font-bold hover:shadow-xl transition-all active:scale-95";
+            }
+
+            showSection('home');
+        }
+
         function showSection(sectionId) {
             const sections = ['home', 'play-learn', 'docs'];
             sections.forEach(s => {
                 document.getElementById('section-' + s).classList.add('hidden');
                 document.getElementById('btn-' + s).classList.remove('active');
             });
-
             document.getElementById('section-' + sectionId).classList.remove('hidden');
             document.getElementById('btn-' + sectionId).classList.add('active');
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
-
-        // PWA Setup
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                const swCode = `
-                    self.addEventListener('install', (e) => self.skipWaiting());
-                    self.addEventListener('fetch', (e) => e.respondWith(fetch(e.request)));
-                `;
-                const blob = new Blob([swCode], { type: 'application/javascript' });
-                const swUrl = URL.createObjectURL(blob);
-                navigator.serviceWorker.register(swUrl).catch(() => {});
-            });
-        }
-
-        let deferredPrompt;
-        const installBtn = document.getElementById('installBtn');
-        window.addEventListener('beforeinstallprompt', (e) => {
-            e.preventDefault();
-            deferredPrompt = e;
-            installBtn.classList.remove('hidden');
-        });
-        installBtn.addEventListener('click', async () => {
-            if (deferredPrompt) {
-                deferredPrompt.prompt();
-                const { outcome } = await deferredPrompt.userChoice;
-                if (outcome === 'accepted') installBtn.classList.add('hidden');
-                deferredPrompt = null;
-            }
-        });
     </script>
 </body>
 </html>
