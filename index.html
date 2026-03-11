@@ -56,6 +56,12 @@
         .mode-option:hover {
             transform: scale(1.05);
         }
+        
+        /* Hiệu ứng đặc biệt cho Chess Club trong Pro Max */
+        .pro-max-glow {
+            box-shadow: 0 0 15px rgba(234, 88, 12, 0.2);
+            border: 2px solid rgba(234, 88, 12, 0.3);
+        }
     </style>
 </head>
 <body class="min-h-screen flex flex-col">
@@ -76,7 +82,7 @@
                     <p class="text-slate-400 text-sm mt-2 font-medium">Trải nghiệm tiêu chuẩn</p>
                 </button>
 
-                <!-- Chế độ Pro Max (Màu cam vàng) -->
+                <!-- Chế độ Pro Max -->
                 <button onclick="selectMode('Pro Max')" class="mode-option bg-gradient-to-br from-orange-500/20 to-orange-900/40 border border-orange-500/30 p-8 rounded-[2rem] hover:from-orange-600/30 hover:to-orange-900/50 group relative overflow-hidden">
                     <div class="absolute top-0 right-0 p-2"><span class="bg-orange-500 text-[10px] text-white font-bold px-2 py-1 rounded-full uppercase">Hot</span></div>
                     <div class="w-16 h-16 bg-orange-600 rounded-2xl mx-auto mb-4 flex items-center justify-center text-white shadow-lg shadow-orange-500/20">
@@ -142,7 +148,7 @@
                 </div>
 
                 <div class="flex items-center space-x-3 mb-8">
-                    <div id="accent-bar" class="h-8 w-2 bg-blue-700 rounded-full"></div>
+                    <div id="accent-bar" class="h-8 w-2 bg-blue-700 rounded-full transition-all"></div>
                     <h2 class="text-2xl font-bold text-gray-800 tracking-tight">Gợi ý dành cho bạn</h2>
                 </div>
 
@@ -178,7 +184,18 @@
                 </div>
 
                 <div id="game-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Music App (Chỉ xuất hiện ở Vip Pro) -->
+                    <!-- Chess Club (Luôn kiểm tra trạng thái hiển thị trong JS) -->
+                    <div id="card-chess-club" class="hidden app-card bg-white p-6 rounded-3xl shadow-sm border-t-8 border-orange-500 flex flex-col pro-max-glow">
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="text-xs font-bold text-orange-600 uppercase tracking-widest">CLB Cờ Vua</span>
+                            <span class="bg-orange-100 text-orange-700 text-[10px] px-2 py-0.5 rounded-full font-bold">PRO MAX +</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Chess Club</h3>
+                        <p class="text-gray-600 mb-6 flex-grow text-sm font-medium">Tham gia câu lạc bộ cờ vua chuyên nghiệp và nâng tầm kỹ năng.</p>
+                        <a href="https://play-king-maker.lovable.app" target="_blank" class="text-center py-3 bg-orange-600 text-white font-bold rounded-2xl hover:bg-orange-700 transition shadow-lg shadow-orange-100">Vào câu lạc bộ</a>
+                    </div>
+
+                    <!-- Music App (Dành cho Vip Pro) -->
                     <div id="card-music" class="hidden app-card bg-white p-6 rounded-3xl shadow-sm border-t-8 border-pink-500 flex flex-col">
                         <div class="flex justify-between items-start mb-2">
                             <span class="text-xs font-bold text-pink-600 uppercase tracking-widest">Giải trí</span>
@@ -204,14 +221,6 @@
                         <p class="text-gray-600 mb-6 flex-grow text-sm">Gia sư Tiếng Anh luyện giao tiếp trôi chảy hơn.</p>
                         <a href="https://my-speak-buddy.lovable.app" target="_blank" class="text-center py-3 bg-rose-500 text-white font-bold rounded-2xl hover:bg-rose-600 transition shadow-lg">Học giao tiếp</a>
                     </div>
-
-                    <!-- Các game khác giữ nguyên -->
-                    <div class="app-card bg-white p-6 rounded-3xl shadow-sm border-t-8 border-emerald-500 flex flex-col">
-                        <span class="text-xs font-bold text-emerald-600 uppercase tracking-widest mb-2">Cộng đồng</span>
-                        <h3 class="text-xl font-bold text-gray-800 mb-2">Chess.com</h3>
-                        <p class="text-gray-600 mb-6 flex-grow text-sm">Đấu với bạn bè toàn cầu.</p>
-                        <a href="https://www.chess.com/" target="_blank" class="text-center py-3 bg-emerald-600 text-white font-bold rounded-2xl hover:bg-emerald-700 transition shadow-lg">Vào thi đấu</a>
-                    </div>
                 </div>
             </section>
 
@@ -235,7 +244,7 @@
         </main>
 
         <footer class="bg-white border-t border-gray-100 py-10 mt-auto">
-            <div class="container mx-auto px-4">
+            <div class="container mx-auto px-4 text-center sm:text-left">
                 <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
                     <div class="flex items-center space-x-2">
                         <div id="footer-logo" class="w-8 h-8 bg-blue-700 rounded-lg flex items-center justify-center text-white font-bold text-xs shadow-sm">J</div>
@@ -259,7 +268,10 @@
             const footerLogo = document.getElementById('footer-logo');
             const displayMode = document.getElementById('display-mode');
             const heroCta = document.getElementById('hero-cta');
+            
+            // Cards đặc biệt
             const musicCard = document.getElementById('card-music');
+            const chessClubCard = document.getElementById('card-chess-club');
 
             modeSelector.classList.add('hidden');
             mainApp.classList.remove('hidden');
@@ -267,13 +279,14 @@
             displayMode.innerText = name;
             welcomeBadge.innerText = `Chế độ: ${name}`;
             
-            // Reset classes
+            // Reset styles
             document.body.className = "min-h-screen flex flex-col";
             heroBanner.className = "rounded-[2rem] p-8 sm:p-16 text-white mb-12 shadow-2xl relative overflow-hidden transition-all duration-700 bg-gradient-to-br ";
             navLogo.className = "w-10 h-10 rounded-xl flex items-center justify-center text-white font-bold shadow-inner transition-all duration-500 ";
 
-            // Ẩn music app mặc định
+            // Ẩn tất cả card đặc biệt trước khi kiểm tra mode
             musicCard.classList.add('hidden');
+            chessClubCard.classList.add('hidden');
 
             if (name === 'Vip Pro') {
                 document.body.classList.add('mode-vip-pro');
@@ -284,8 +297,9 @@
                 footerLogo.className = "w-8 h-8 bg-amber-600 rounded-lg flex items-center justify-center text-white font-bold text-xs shadow-sm";
                 heroCta.className = "bg-white text-amber-700 px-8 py-4 rounded-2xl font-bold hover:shadow-xl transition-all active:scale-95";
                 
-                // Hiện Music App trong mục Vip Pro
+                // Vip Pro có quyền truy cập tất cả
                 musicCard.classList.remove('hidden');
+                chessClubCard.classList.remove('hidden');
             } 
             else if (name === 'Pro Max') {
                 document.body.classList.add('mode-pro-max');
@@ -295,8 +309,12 @@
                 navLogo.classList.add('bg-orange-600');
                 footerLogo.className = "w-8 h-8 bg-orange-600 rounded-lg flex items-center justify-center text-white font-bold text-xs shadow-sm";
                 heroCta.className = "bg-white text-orange-700 px-8 py-4 rounded-2xl font-bold hover:shadow-xl transition-all active:scale-95";
+                
+                // Pro Max có Chess Club
+                chessClubCard.classList.remove('hidden');
             } 
             else {
+                // Chế độ Bình thường
                 heroTitle.innerText = "Khám phá tiềm năng của bạn";
                 heroBanner.classList.add('from-blue-700', 'to-indigo-600');
                 accentBar.className = "h-8 w-2 bg-blue-700 rounded-full transition-all";
