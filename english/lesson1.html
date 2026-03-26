@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KidZone Learn: I'm dancing with my Dad</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fadeIn {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+        .section-card {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+        .vocab-card {
+            opacity: 0;
+            transform: scale(0.9);
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+        .quiz-option.selected {
+            transform: scale(1.05);
+            box-shadow: 0 0 0 4px var(--tw-ring-color);
+        }
+    </style>
+</head>
+<body class="bg-sky-50 text-slate-800">
+    <div id="app">
+        <header class="sticky top-0 z-50 bg-white/80 backdrop-blur-lg shadow-md p-4 md:p-6">
+            <div class="container mx-auto flex flex-col sm:flex-row justify-between items-center text-center sm:text-left">
+                <div>
+                    <h1 class="font-display text-3xl md:text-4xl font-bold text-sky-600">KidZone Learn</h1>
+                    <p class="font-body text-slate-600 text-sm md:text-base">English Topic: I'm dancing with my Dad</p>
+                </div>
+                <div class="mt-2 sm:mt-0 bg-amber-100 text-amber-800 text-xs font-bold px-3 py-1.5 rounded-full">
+                    For Children 8 Years Old
+                </div>
+            </div>
+        </header>
+
+        <main class="container mx-auto p-4 md:p-8 space-y-12">
+            
+            <!-- Section 1: Vocabulary -->
+            <section id="vocabulary" class="section-card bg-white rounded-2xl shadow-lg p-6 md:p-8" style="animation-delay: 0.1s;">
+                <div class="flex items-center gap-4 mb-6">
+                    <div class="bg-teal-100 p-3 rounded-full">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-teal-500" viewBox="0 0 24 24" fill="currentColor"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8s8 3.58 8 8s-3.58 8-8 8zm-2-3.5l6-4.5l-6-4.5v9z"/></svg>
+                    </div>
+                    <h2 class="font-display text-3xl md:text-4xl font-bold text-teal-600">Vocabulary Words</h2>
+                </div>
+                <div id="vocabularyGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
+                    <!-- Vocabulary cards will be injected here by JS -->
+                </div>
+            </section>
+
+            <!-- Section 2: Reading & Quiz -->
+            <section id="reading" class="section-card bg-white rounded-2xl shadow-lg p-6 md:p-8" style="animation-delay: 0.2s;">
+                <div class="flex items-center gap-4 mb-6">
+                    <div class="bg-rose-100 p-3 rounded-full">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-rose-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg>
+                    </div>
+                    <h2 class="font-display text-3xl md:text-4xl font-bold text-rose-600">Short Reading & Quiz</h2>
+                </div>
+
+                <div class="bg-rose-50 rounded-xl p-6 mb-8">
+                    <h3 class="font-display text-2xl text-rose-800 font-semibold mb-2">A Special Dance in the Living Room</h3>
+                    <p class="font-body text-slate-700 leading-relaxed space-y-4">
+                        <p>Lily grabbed her Dad's hand. "Let's dance!" she said with a big <strong>giggle</strong>. The music started, a happy song with a fun <strong>rhythm</strong>. Dad was her best dance <strong>partner</strong>. "I will <strong>lead</strong>, and you can <strong>follow</strong>," he said with a smile. They started with simple <strong>steps</strong>, a little <strong>shuffle</strong> to the left and a <strong>sway</strong> to the right. Lily loved to <strong>twirl</strong>, spinning around until she was dizzy.</p>
+                        <p>The music's <strong>tempo</strong> got faster! They began to <strong>glide</strong> across the floor like skaters on ice. It took a lot of <strong>coordination</strong> to not bump into the sofa! Dad lifted her up high, and they spun together, laughing the whole time. It was the best dance ever.</p>
+                    </p>
+                </div>
+
+                <div id="readingQuiz" class="space-y-6">
+                    <!-- Reading quiz questions will be injected here by JS -->
+                </div>
+            </section>
+            
+            <!-- Section 3: Listen & Answer -->
+            <section id="listeningQuiz" class="section-card bg-white rounded-2xl shadow-lg p-6 md:p-8" style="animation-delay: 0.3s;">
+                <div class="flex items-center gap-4 mb-6">
+                    <div class="bg-indigo-100 p-3 rounded-full">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-indigo-500" viewBox="0 0 20 20" fill="currentColor"><path d="M18 3a1 1 0 00-1.447-.894L4 6.414v6.172a2 2 0 00-2 2v2a1 1 0 001 1h14a1 1 0 001-1v-2a2 2 0 00-2-2v-4.414l3.447-1.724A1 1 0 0018 3z" /></svg>
+                    </div>
+                    <h2 class="font-display text-3xl md:text-4xl font-bold text-indigo-600">Listen & Answer Quiz</h2>
+                </div>
+                
+                <div class="bg-indigo-50 rounded-xl p-4 md:p-6 mb-6">
+                    <p class="font-body font-semibold text-indigo-800 mb-2">Listen to the conversation carefully:</p>
+                    <audio src='https://opal.google/board/blobs/ec0e2f12-9b23-47d1-aed0-8e7678275942' alt='media_1' controls class="w-full"></audio>
+                </div>
+                
+                <div class="mb-8">
+                    <button id="toggleScriptBtn" class="w-full text-left font-body font-bold text-indigo-700 bg-indigo-100 hover:bg-indigo-200 focus:ring-4 focus:ring-indigo-300 rounded-lg px-5 py-3 transition-all duration-300 flex justify-between items-center">
+                        Show Conversation Script
+                        <svg id="scriptIcon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+                    <div id="conversationScript" class="hidden mt-4 bg-gray-50 p-4 rounded-lg border border-gray-200 font-body text-sm space-y-2">
+                        <!-- Script will be injected here by JS -->
+                    </div>
+                </div>
+
+                <div id="listeningQuizQuestions" class="space-y-6">
+                     <!-- Listening quiz questions will be injected here by JS -->
+                </div>
+            </section>
+            
+            <!-- Section 4: Listen & Repeat -->
+            <section id="repeat" class="section-card bg-white rounded-2xl shadow-lg p-6 md:p-8" style="animation-delay: 0.4s;">
+                 <div class="flex items-center gap-4 mb-6">
+                    <div class="bg-emerald-100 p-3 rounded-full">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-emerald-500" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7 4a3 3 0 016 0v4a3 3 0 11-6 0V4zm4 10.93A7.001 7.001 0 0017 8a1 1 0 10-2 0A5 5 0 017 8a1 1 0 00-2 0 7.001 7.001 0 006 6.93V17H6a1 1 0 100 2h8a1 1 0 100-2h-3v-2.07z" clip-rule="evenodd" /></svg>
+                    </div>
+                    <h2 class="font-display text-3xl md:text-4xl font-bold text-emerald-600">Listen & Repeat</h2>
+                </div>
+                <div id="repeatSentences" class="space-y-4">
+                     <!-- Repeat sentences will be injected here by JS -->
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+<script>
+    // Tailwind Config
+    tailwind.config = {
+        theme: {
+            extend: {
+                fontFamily: {
+                    display: ['Fredoka', 'sans-serif'],
+                    body: ['Nunito', 'sans-serif'],
+                },
+            }
+        }
+    }
+
+    // Data
+    const vocabulary = [
+        { word: "Rhythm", definition: "A repeated pattern of sound or movement." },
+        { word: "Partner", definition: "Someone you do an activity with, like dancing." },
+        { word: "Twirl", definition: "To turn around and around quickly." },
+        { word: "Steps", definition: "The movements you make with your feet when you dance." },
+        { word: "Lead", definition: "To guide or show the way in a dance." },
+        { word: "Follow", definition: "To copy the movements of the person leading." },
+        { word: "Tempo", definition: "The speed of the music." },
+        { word: "Glide", definition: "To move smoothly and easily." },
+        { word: "Shuffle", definition: "To slide your feet along the floor." },
+        { word: "Sway", definition: "To move gently from side to side." },
+        { word: "Coordination", definition: "Making your body parts work together smoothly." },
+        { word: "Giggle", definition: "To laugh in a light, silly way." },
+    ];
+    
+    const readingQuizData = [
+        {
+            question: "Who is Lily's dance partner?",
+            answer: "Her Dad is her dance partner."
+        },
+        {
+            question: "What does it mean to 'twirl'?",
+            answer: "To spin around and around quickly."
+        },
+        {
+            question: "What is 'tempo' in music?",
+            answer: "The speed of the music."
+        },
+        {
+            question: "What did Lily and her Dad need 'coordination' for?",
+            answer: "So they wouldn't bump into the sofa."
+        },
+        {
+            question: "How did Lily feel while dancing?",
+            answer: "She felt happy and was giggling."
+        }
+    ];
+
+    const conversationScriptData = {
+        participants: ["Lily", "Dad"],
+        dialogue: [
+            { speaker: "Lily", line: "Dad, let's dance! Put on some music!" },
+            { speaker: "Dad", line: "Great idea! I'll be your dance partner. What's a good tempo?" },
+            { speaker: "Lily", line: "A fast one! So we can twirl really fast!" },
+            { speaker: "Dad", line: "Okay, I'll lead and you follow my steps. Ready?" },
+            { speaker: "Lily", line: "Ready! I love the rhythm of this song!" },
+            { speaker: "Dad", line: "Me too. Let's glide across the living room." },
+            { speaker: "Lily", line: "We have good coordination, we haven't bumped into anything!" },
+            { speaker: "Dad", line: "That's because we're a great team. Now, let's sway to the music." },
+            { speaker: "Lily", line: "And shuffle our feet like this?" },
+            { speaker: "Dad", line: "Exactly! You're a natural dancer." },
+            { speaker: "Lily", line: "This is so fun!" },
+            { speaker: "Dad", line: "I agree. I love hearing you giggle." },
+        ]
+    };
+    
+    const listeningQuizData = [
+        {
+            question: "Who suggests dancing first?",
+            options: ["A. Dad", "B. Lily", "C. Her Mom", "D. The radio"],
+            answer: "B",
+            explanation: "Lily is the one who says, 'Dad, let's dance!'"
+        },
+        {
+            question: "What kind of tempo does Lily want for the music?",
+            options: ["A. Slow", "B. Medium", "C. Fast", "D. Sad"],
+            answer: "C",
+            explanation: "Lily says, 'A fast one! So we can twirl really fast!'"
+        },
+        {
+            question: "Who is going to lead the dance?",
+            options: ["A. Lily", "B. They take turns", "C. No one", "D. Dad"],
+            answer: "D",
+            explanation: "Dad says, 'I'll lead and you follow my steps.'"
+        },
+        {
+            question: "What word do they use to describe moving smoothly?",
+            options: ["A. Shuffle", "B. Glide", "C. Jump", "D. Sway"],
+            answer: "B",
+            explanation: "Dad says, 'Let's glide across the living room.'"
+        },
+        {
+            question: "What does Dad love to hear Lily do?",
+            options: ["A. Sing", "B. Count", "C. Giggle", "D. Clap"],
+            answer: "C",
+            explanation: "Dad says, 'I love hearing you giggle.'"
+        }
+    ];
+
+    const listenAndRepeatData = [
+      "I am dancing with my Dad.",
+      "We move to the music.",
+      "He holds my hands.",
+      "We spin in a circle.",
+      "I love to dance with him.",
+      "We jump up and down.",
+      "Dad makes me smile.",
+      "The song is very happy."
+    ];
+
+
+    // JavaScript Logic
+    document.addEventListener('DOMContentLoaded', () => {
+        // --- Vocabulary Section ---
+        const vocabGrid = document.getElementById('vocabularyGrid');
+        const colors = ['bg-sky-100', 'bg-teal-100', 'bg-amber-100', 'bg-rose-100', 'bg-indigo-100', 'bg-emerald-100'];
+        vocabulary.forEach((item, index) => {
+            const card = document.createElement('div');
+            card.className = `vocab-card p-4 rounded-xl flex flex-col items-center text-center shadow-md transition-transform duration-300 hover:scale-105 hover:shadow-xl ${colors[index % colors.length]}`;
+            card.style.animationDelay = `${index * 0.05}s`;
+            card.innerHTML = `
+                <h3 class="font-display text-2xl font-bold text-slate-800">${item.word}</h3>
+                <p class="font-body text-slate-600 my-2 flex-grow">${item.definition}</p>
+                <button onclick="speakWord('${item.word}')" class="mt-auto bg-white/80 hover:bg-white text-slate-700 font-bold py-2 px-4 rounded-full shadow-sm transition-all duration-300 flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M10 2a6 6 0 00-6 6v3.586l-1.707 1.707A1 1 0 003 15v1a1 1 0 001 1h12a1 1 0 001-1v-1a1 1 0 00-.293-.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z" /></svg>
+                    Speak
+                </button>
+            `;
+            vocabGrid.appendChild(card);
+        });
+
+        window.speakWord = (word) => {
+            if ('speechSynthesis' in window) {
+                const utterance = new SpeechSynthesisUtterance(word);
+                speechSynthesis.speak(utterance);
+            } else {
+                alert('Sorry, your browser does not support text-to-speech.');
+            }
+        };
+        
+        // --- Reading Quiz Section ---
+        const readingQuizContainer = document.getElementById('readingQuiz');
+        readingQuizData.forEach((item, index) => {
+            const quizItem = document.createElement('div');
+            quizItem.className = 'animate-fadeIn bg-rose-50 rounded-lg p-4';
+            quizItem.style.animationDelay = `${index * 0.1}s`;
+            quizItem.innerHTML = `
+                <p class="font-body font-bold text-rose-800 mb-3">${index + 1}. ${item.question}</p>
+                <button class="toggle-answer-btn text-sm font-bold bg-white text-rose-600 px-4 py-2 rounded-full hover:bg-rose-100 transition-colors shadow-sm">Show Answer</button>
+                <div class="answer-content hidden mt-3 bg-white p-3 rounded-md text-slate-700 font-body">${item.answer}</div>
+            `;
+            readingQuizContainer.appendChild(quizItem);
+        });
+        
+        readingQuizContainer.addEventListener('click', (e) => {
+            if (e.target.classList.contains('toggle-answer-btn')) {
+                const button = e.target;
+                const answer = button.nextElementSibling;
+                const isHidden = answer.classList.contains('hidden');
+                
+                if (isHidden) {
+                    answer.classList.remove('hidden');
+                    button.textContent = 'Hide Answer';
+                } else {
+                    answer.classList.add('hidden');
+                    button.textContent = 'Show Answer';
+                }
+            }
+        });
+
+        // --- Listening Quiz Section ---
+        // Script toggle
+        const toggleScriptBtn = document.getElementById('toggleScriptBtn');
+        const scriptIcon = document.getElementById('scriptIcon');
+        const conversationScript = document.getElementById('conversationScript');
+
+        conversationScriptData.dialogue.forEach(line => {
+             const p = document.createElement('p');
+             const speakerClass = line.speaker === "Lily" ? "text-pink-600" : "text-blue-600";
+             p.innerHTML = `<strong class="${speakerClass}">${line.speaker}:</strong> ${line.line}`;
+             conversationScript.appendChild(p);
+        });
+        
+        toggleScriptBtn.addEventListener('click', () => {
+            const isHidden = conversationScript.classList.contains('hidden');
+            if (isHidden) {
+                conversationScript.classList.remove('hidden');
+                toggleScriptBtn.childNodes[0].nodeValue = 'Hide Conversation Script ';
+                scriptIcon.style.transform = 'rotate(180deg)';
+            } else {
+                conversationScript.classList.add('hidden');
+                toggleScriptBtn.childNodes[0].nodeValue = 'Show Conversation Script ';
+                scriptIcon.style.transform = 'rotate(0deg)';
+            }
+        });
+
+        // Listening questions
+        const listeningQuizContainer = document.getElementById('listeningQuizQuestions');
+        listeningQuizData.forEach((item, index) => {
+            const quizItem = document.createElement('div');
+            quizItem.className = 'animate-fadeIn bg-indigo-50 rounded-lg p-4';
+            quizItem.style.animationDelay = `${index * 0.1}s`;
+            
+            const optionsHTML = item.options.map((opt, i) => {
+                const optionLetter = String.fromCharCode(65 + i);
+                return `<button class="quiz-option w-full text-left font-body bg-white hover:bg-indigo-100 rounded-lg p-3 transition-all duration-200" data-option="${optionLetter}">${opt}</button>`;
+            }).join('');
+
+            quizItem.innerHTML = `
+                <p class="font-body font-bold text-indigo-800 mb-3">${index + 1}. ${item.question}</p>
+                <div class="options-grid grid grid-cols-1 sm:grid-cols-2 gap-2" data-answer="${item.answer}">
+                    ${optionsHTML}
+                </div>
+                <div class="result-message mt-3"></div>
+            `;
+            listeningQuizContainer.appendChild(quizItem);
+        });
+
+        listeningQuizContainer.addEventListener('click', (e) => {
+            if (e.target.classList.contains('quiz-option')) {
+                const button = e.target;
+                const optionsGrid = button.parentElement;
+                const correctAnswer = optionsGrid.dataset.answer;
+                const selectedAnswer = button.dataset.option;
+                const resultMessage = optionsGrid.nextElementSibling;
+                
+                // Remove selection from siblings
+                Array.from(optionsGrid.children).forEach(child => {
+                    child.classList.remove('selected', 'ring-green-400', 'ring-red-400');
+                    child.disabled = true;
+                });
+                
+                button.classList.add('selected');
+                
+                const questionData = listeningQuizData.find(q => q.answer === correctAnswer);
+
+                if (selectedAnswer === correctAnswer) {
+                    button.classList.add('ring-green-400');
+                    resultMessage.innerHTML = `<p class="font-bold text-green-600">Correct! 🎉</p><p class="text-sm text-slate-600">${questionData.explanation}</p>`;
+                } else {
+                    button.classList.add('ring-red-400');
+                    // Highlight correct answer
+                    optionsGrid.querySelector(`[data-option="${correctAnswer}"]`).classList.add('ring-green-400');
+                    resultMessage.innerHTML = `<p class="font-bold text-red-600">Not quite.</p><p class="text-sm text-slate-600">${questionData.explanation}</p>`;
+                }
+            }
+        });
+
+        // --- Listen & Repeat Section ---
+        const repeatContainer = document.getElementById('repeatSentences');
+        listenAndRepeatData.forEach((sentence, index) => {
+            const item = document.createElement('div');
+            item.className = 'animate-fadeIn flex items-center justify-between gap-4 bg-emerald-50 p-4 rounded-lg';
+            item.style.animationDelay = `${index * 0.1}s`;
+            item.innerHTML = `
+                <p class="font-body text-emerald-800">${sentence}</p>
+                <button onclick="speakWord('${sentence.replace(/'/g, "\\'")}')" class="flex-shrink-0 bg-white hover:bg-emerald-100 text-emerald-600 font-bold p-3 rounded-full shadow-sm transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500">
+                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" /></svg>
+                </button>
+            `;
+            repeatContainer.appendChild(item);
+        });
+
+    });
+</script>
+</body>
+</html>
