@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome</title>
+    <link rel="stylesheet" href="styles.css">
     <style>
         * {
             margin: 0;
@@ -53,13 +54,47 @@
             transform: translateY(-2px);
             box-shadow: 0 10px 20px rgba(102, 126, 234, 0.4);
         }
+        .lessons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+        .lesson-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        .lesson-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+        .lesson-card h3 {
+            margin: 0 0 10px 0;
+            font-size: 1.3em;
+        }
+        .lesson-card p {
+            margin: 0;
+            font-size: 0.95em;
+            color: rgba(255, 255, 255, 0.9);
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Welcome</h1>
-        <p>Build something amazing today. Start your journey with us and explore endless possibilities.</p>
-        <button class="cta-button">Get Started</button>
+        <h1>English Lessons</h1>
+        <p>Choose a lesson to begin learning</p>
+        
+        <div class="lessons-grid">
+            <a href="english/lesson1.html" class="lesson-card">
+                <h3>Lesson 1</h3>
+                <p>Start your English learning journey</p>
+            </a>
+        </div>
     </div>
 </body>
 </html>
