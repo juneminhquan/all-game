@@ -89,12 +89,106 @@
         <h1>English Lessons</h1>
         <p>Choose a lesson to begin learning</p>
         
-        <div class="lessons-grid">
-            <a href="english/lesson1.html" class="lesson-card">
-                <h3>Lesson 1</h3>
-                <p>Start your English learning journey</p>
-            </a>
+        <div class="lessons-grid" id="lessonsGrid">
+            <div class="lesson-card">
+                <h3>Loading lessons...</h3>
+                <p>Please wait while lessons are discovered.</p>
+            </div>
         </div>
     </div>
+
+    <script>
+        const lessonsGrid = document.getElementById('lessonsGrid');
+        const lessonFolder = 'english/';
+        const lessonPrefix = 'lesson';
+        const maxLessons = 50;
+        const maxConsecutiveMisses = 5;
+
+        function createLessonCard(url, title, description) {
+            const anchor = document.createElement('a');
+            anchor.href = url;
+            anchor.className = 'lesson-card';
+            anchor.innerHTML = `
+                <h3>${title}</h3>
+                <p>${description}</p>
+            `;
+            return anchor;
+        }
+
+        function formatTitleFromFilename(filename) {
+            const match = filename.match(/lesson(\d+)\.html$/i);
+            return match ? `Lesson ${match[1]}` : filename;
+        }
+
+        async function fetchDirectoryListing() {
+            try {
+                const response = await fetch(lessonFolder, { method: 'GET' });
+                if (!response.ok) return null;
+                const contentType = response.headers.get('content-type') || '';
+                if (!contentType.includes('text/html')) return null;
+                const text = await response.text();
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(text, 'text/html');
+                const links = Array.from(doc.querySelectorAll('a'))
+                    .map(link => link.getAttribute('href'))
+                    .filter(href => href && href.match(/^lesson\d+\.html$/i));
+                return Array.from(new Set(links));
+            } catch (error) {
+                return null;
+            }
+        }
+
+        async function discoverLessons() {
+            const directoryLessons = await fetchDirectoryListing();
+            if (directoryLessons && directoryLessons.length) {
+                return directoryLessons.sort((a, b) => {
+                    const aNum = Number(a.match(/lesson(\d+)\.html/i)?.[1] || 0);
+                    const bNum = Number(b.match(/lesson(\d+)\.html/i)?.[1] || 0);
+                    return aNum - bNum;
+                });
+            }
+
+            const foundLessons = [];
+            let consecutiveMisses = 0;
+            for (let i = 1; i <= maxLessons && consecutiveMisses < maxConsecutiveMisses; i += 1) {
+                const url = `${lessonFolder}${lessonPrefix}${i}.html`;
+                try {
+                    const response = await fetch(url, { method: 'HEAD' });
+                    if (response.ok) {
+                        foundLessons.push(`${lessonPrefix}${i}.html`);
+                        consecutiveMisses = 0;
+                    } else {
+                        consecutiveMisses += 1;
+                    }
+                } catch (error) {
+                    consecutiveMisses += 1;
+                }
+            }
+            return foundLessons;
+        }
+
+        async function renderLessons() {
+            const lessons = await discoverLessons();
+            lessonsGrid.innerHTML = '';
+
+            if (!lessons || !lessons.length) {
+                lessonsGrid.innerHTML = `
+                    <div class="lesson-card" style="background: #ffe4e6; color: #9f1239;">
+                        <h3>No lessons found</h3>
+                        <p>If your lessons are in /english/, ensure they follow the pattern <code>lessonN.html</code>.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            lessons.forEach(filename => {
+                const title = formatTitleFromFilename(filename);
+                const description = `Open ${title}`;
+                lessonsGrid.appendChild(createLessonCard(`${lessonFolder}${filename}`, title, description));
+            });
+        }
+
+        renderLessons();
+    </script>
 </body>
 </html>
