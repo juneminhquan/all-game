@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KidZone Learn: Foods and Dining</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700&display=swap');
+        .icon-gradient-fill {
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+        .answer-toggle-group:checked + .answer-toggle-label .toggle-dot {
+            transform: translateX(100%);
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        display: ['"Fredoka One"', 'cursive'],
+                        body: ['Nunito', 'sans-serif'],
+                    },
+                    colors: {
+                        'brand-bg': '#FFFBF5',
+                        'brand-text': '#4C4037',
+                        'brand-blue': '#5EADF7',
+                        'brand-yellow': '#FFD15B',
+                        'brand-green': '#58D68D',
+                        'brand-coral': '#FF8C69',
+                        'brand-purple': '#A569BD',
+                        'brand-light-blue': '#EBF5FF',
+                        'brand-light-yellow': '#FFF9E8',
+                        'brand-light-green': '#E8F8F5',
+                        'brand-light-coral': '#FFF2EE',
+                        'brand-light-purple': '#F4ECF7',
+                    },
+                    boxShadow: {
+                       'interactive': '0 4px 14px 0 rgba(0, 0, 0, 0.05), 0 6px 20px 0 rgba(0, 0, 0, 0.03)',
+                       'interactive-hover': '0 6px 18px 0 rgba(0, 0, 0, 0.08), 0 8px 24px 0 rgba(0, 0, 0, 0.05)',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-brand-bg font-body text-brand-text antialiased">
+    <div id="app" class="max-w-7xl mx-auto p-4 sm:p-6 lg:p-8">
+
+        <!-- Header -->
+        <header class="text-center mb-12 md:mb-16">
+            <div class="inline-block bg-white p-4 rounded-3xl shadow-interactive">
+                <h1 class="font-display text-4xl sm:text-5xl md:text-6xl tracking-wider bg-gradient-to-r from-brand-blue to-brand-coral icon-gradient-fill">KidZone Learn</h1>
+            </div>
+            <p class="mt-4 font-display text-xl sm:text-2xl text-brand-text/80">Foods and Dining with Family</p>
+            <span class="inline-block mt-2 bg-brand-yellow text-brand-text font-bold px-4 py-1 rounded-full text-sm">Primary School Level</span>
+        </header>
+
+        <main class="space-y-16 md:space-y-24">
+
+            <!-- Section 1: Vocabulary -->
+            <section id="vocabulary">
+                <h2 class="font-display text-3xl sm:text-4xl mb-8 flex items-center justify-center gap-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-brand-blue" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M4 2a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V4a2 2 0 00-2-2H4zm10 10a1 1 0 10-2 0v2a1 1 0 102 0v-2zm-4 0a1 1 0 10-2 0v2a1 1 0 102 0v-2zm-4 0a1 1 0 10-2 0v2a1 1 0 102 0v-2zm12-4a1 1 0 100-2H4a1 1 0 100 2h12z" clip-rule="evenodd" /></svg>
+                    Vocabulary Words
+                </h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                    <div class="bg-white p-6 rounded-2xl shadow-interactive transition-all duration-300 hover:shadow-interactive-hover hover:-translate-y-1">
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="font-display text-2xl text-brand-coral">Breakfast</h3>
+                            <button onclick="speakText('Breakfast')" class="p-2 rounded-full bg-brand-light-coral text-brand-coral hover:bg-brand-coral hover:text-white transition-colors"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM14.657 2.929a1 1 0 011.414 0A9.972 9.972 0 0119 10a9.972 9.972 0 01-2.929 7.071 1 1 0 01-1.414-1.414A7.971 7.971 0 0017 10c0-2.21-.894-4.208-2.343-5.657a1 1 0 010-1.414zm-2.829 2.828a1 1 0 011.415 0A5.983 5.983 0 0115 10a5.984 5.984 0 01-1.757 4.243 1 1 0 01-1.415-1.415A3.984 3.984 0 0013 10a3.983 3.983 0 00-1.172-2.828 1 1 0 010-1.415z" clip-rule="evenodd" /></svg></button>
+                        </div>
+                        <p class="text-brand-text/80 text-sm">The first meal of the day, usually eaten in the morning.</p>
+                    </div>
+                    <!-- Repeat for all vocabulary words -->
+                    <div class="bg-white p-6 rounded-2xl shadow-interactive transition-all duration-300 hover:shadow-interactive-hover hover:-translate-y-1">
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="font-display text-2xl text-brand-blue">Lunch</h3>
+                            <button onclick="speakText('Lunch')" class="p-2 rounded-full bg-brand-light-blue text-brand-blue hover:bg-brand-blue hover:text-white transition-colors"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM14.657 2.929a1 1 0 011.414 0A9.972 9.972 0 0119 10a9.972 9.972 0 01-2.929 7.071 1 1 0 01-1.414-1.414A7.971 7.971 0 0017 10c0-2.21-.894-4.208-2.343-5.657a1 1 0 010-1.414zm-2.829 2.828a1 1 0 011.415 0A5.983 5.983 0 0115 10a5.984 5.984 0 01-1.757 4.243 1 1 0 01-1.415-1.415A3.984 3.984 0 0013 10a3.983 3.983 0 00-1.172-2.828 1 1 0 010-1.415z" clip-rule="evenodd" /></svg></button>
+                        </div>
+                        <p class="text-brand-text/80 text-sm">A meal eaten in the middle of the day.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-2xl shadow-interactive transition-all duration-300 hover:shadow-interactive-hover hover:-translate-y-1">
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="font-display text-2xl text-brand-green">Dinner</h3>
+                            <button onclick="speakText('Dinner')" class="p-2 rounded-full bg-brand-light-green text-brand-green hover:bg-brand-green hover:text-white transition-colors"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM14.657 2.929a1 1 0 011.414 0A9.972 9.972 0 0119 10a9.972 9.972 0 01-2.929 7.071 1 1 0 01-1.414-1.414A7.971 7.971 0 0017 10c0-2.21-.894-4.208-2.343-5.657a1 1 0 010-1.414zm-2.829 2.828a1 1 0 011.415 0A5.983 5.983 0 0115 10a5.984 5.984 0 01-1.757 4.243 1 1 0 01-1.415-1.415A3.984 3.984 0 0013 10a3.983 3.983 0 00-1.172-2.828 1 1 0 010-1.415z" clip-rule="evenodd" /></svg></button>
+                        </div>
+                        <p class="text-brand-text/80 text-sm">The main meal of the day, often eaten in the evening with family.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-2xl shadow-interactive transition-all duration-300 hover:shadow-interactive-hover hover:-translate-y-1">
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="font-display text-2xl text-brand-purple">Healthy</h3>
+                            <button onclick="speakText('Healthy')" class="p-2 rounded-full bg-brand-light-purple text-brand-purple hover:bg-brand-purple hover:text-white transition-colors"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM14.657 2.929a1 1 0 011.414 0A9.972 9.972 0 0119 10a9.972 9.972 0 01-2.929 7.071 1 1 0 01-1.414-1.414A7.971 7.971 0 0017 10c0-2.21-.894-4.208-2.343-5.657a1 1 0 010-1.414zm-2.829 2.828a1 1 0 011.415 0A5.983 5.983 0 0115 10a5.984 5.984 0 01-1.757 4.243 1 1 0 01-1.415-1.415A3.984 3.984 0 0013 10a3.983 3.983 0 00-1.172-2.828 1 1 0 010-1.415z" clip-rule="evenodd" /></svg></button>
+                        </div>
+                        <p class="text-brand-text/80 text-sm">Food that is good for your body and helps you grow strong.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-2xl shadow-interactive transition-all duration-300 hover:shadow-interactive-hover hover:-translate-y-1">
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="font-display text-2xl text-brand-blue">Utensils</h3>
+                            <button onclick="speakText('Utensils')" class="p-2 rounded-full bg-brand-light-blue text-brand-blue hover:bg-brand-blue hover:text-white transition-colors"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM14.657 2.929a1 1 0 011.414 0A9.972 9.972 0 0119 10a9.972 9.972 0 01-2.929 7.071 1 1 0 01-1.414-1.414A7.971 7.971 0 0017 10c0-2.21-.894-4.208-2.343-5.657a1 1 0 010-1.414zm-2.829 2.828a1 1 0 011.415 0A5.983 5.983 0 0115 10a5.984 5.984 0 01-1.757 4.243 1 1 0 01-1.415-1.415A3.984 3.984 0 0013 10a3.983 3.983 0 00-1.172-2.828 1 1 0 010-1.415z" clip-rule="evenodd" /></svg></button>
+                        </div>
+                        <p class="text-brand-text/80 text-sm">Tools like forks, spoons, and knives that we use to pick up and eat food.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-2xl shadow-interactive transition-all duration-300 hover:shadow-interactive-hover hover:-translate-y-1">
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="font-display text-2xl text-brand-coral">Napkin</h3>
+                            <button onclick="speakText('Napkin')" class="p-2 rounded-full bg-brand-light-coral text-brand-coral hover:bg-brand-coral hover:text-white transition-colors"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM14.657 2.929a1 1 0 011.414 0A9.972 9.972 0 0119 10a9.972 9.972 0 01-2.929 7.071 1 1 0 01-1.414-1.414A7.971 7.971 0 0017 10c0-2.21-.894-4.208-2.343-5.657a1 1 0 010-1.414zm-2.829 2.828a1 1 0 011.415 0A5.983 5.983 0 0115 10a5.984 5.984 0 01-1.757 4.243 1 1 0 01-1.415-1.415A3.984 3.984 0 0013 10a3.983 3.983 0 00-1.172-2.828 1 1 0 010-1.415z" clip-rule="evenodd" /></svg></button>
+                        </div>
+                        <p class="text-brand-text/80 text-sm">A piece of cloth or paper used to keep your face and hands clean while eating.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-2xl shadow-interactive transition-all duration-300 hover:shadow-interactive-hover hover:-translate-y-1">
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="font-display text-2xl text-brand-green">Recipe</h3>
+                            <button onclick="speakText('Recipe')" class="p-2 rounded-full bg-brand-light-green text-brand-green hover:bg-brand-green hover:text-white transition-colors"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM14.657 2.929a1 1 0 011.414 0A9.972 9.972 0 0119 10a9.972 9.972 0 01-2.929 7.071 1 1 0 01-1.414-1.414A7.971 7.971 0 0017 10c0-2.21-.894-4.208-2.343-5.657a1 1 0 010-1.414zm-2.829 2.828a1 1 0 011.415 0A5.983 5.983 0 0115 10a5.984 5.984 0 01-1.757 4.243 1 1 0 01-1.415-1.415A3.984 3.984 0 0013 10a3.983 3.983 0 00-1.172-2.828 1 1 0 010-1.415z" clip-rule="evenodd" /></svg></button>
+                        </div>
+                        <p class="text-brand-text/80 text-sm">A set of instructions that tells you how to cook a specific dish.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-2xl shadow-interactive transition-all duration-300 hover:shadow-interactive-hover hover:-translate-y-1">
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="font-display text-2xl text-brand-purple">Dessert</h3>
+                            <button onclick="speakText('Dessert')" class="p-2 rounded-full bg-brand-light-purple text-brand-purple hover:bg-brand-purple hover:text-white transition-colors"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM14.657 2.929a1 1 0 011.414 0A9.972 9.972 0 0119 10a9.972 9.972 0 01-2.929 7.071 1 1 0 01-1.414-1.414A7.971 7.971 0 0017 10c0-2.21-.894-4.208-2.343-5.657a1 1 0 010-1.414zm-2.829 2.828a1 1 0 011.415 0A5.983 5.983 0 0115 10a5.984 5.984 0 01-1.757 4.243 1 1 0 01-1.415-1.415A3.984 3.984 0 0013 10a3.983 3.983 0 00-1.172-2.828 1 1 0 010-1.415z" clip-rule="evenodd" /></svg></button>
+                        </div>
+                        <p class="text-brand-text/80 text-sm">A sweet treat, like cake or fruit, eaten at the end of a meal.</p>
+                    </div>
+                    <!-- Remaining vocabulary words -->
+                    <div class="bg-white p-6 rounded-2xl shadow-interactive transition-all duration-300 hover:shadow-interactive-hover hover:-translate-y-1"><div class="flex justify-between items-center mb-2"><h3 class="font-display text-2xl text-brand-yellow">Manners</h3><button onclick="speakText('Manners')" class="p-2 rounded-full bg-brand-light-yellow text-brand-yellow hover:bg-brand-yellow hover:text-white transition-colors"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM14.657 2.929a1 1 0 011.414 0A9.972 9.972 0 0119 10a9.972 9.972 0 01-2.929 7.071 1 1 0 01-1.414-1.414A7.971 7.971 0 0017 10c0-2.21-.894-4.208-2.343-5.657a1 1 0 010-1.414zm-2.829 2.828a1 1 0 011.415 0A5.983 5.983 0 0115 10a5.984 5.984 0 01-1.757 4.243 1 1 0 01-1.415-1.415A3.984 3.984 0 0013 10a3.983 3.983 0 00-1.172-2.828 1 1 0 010-1.415z" clip-rule="evenodd"></path></svg></button></div><p class="text-brand-text/80 text-sm">Being polite at the table, such as saying "please" and "thank you."</p></div>
+                    <div class="bg-white p-6 rounded-2xl shadow-interactive transition-all duration-300 hover:shadow-interactive-hover hover:-translate-y-1"><div class="flex justify-between items-center mb-2"><h3 class="font-display text-2xl text-brand-coral">Appetite</h3><button onclick="speakText('Appetite')" class="p-2 rounded-full bg-brand-light-coral text-brand-coral hover:bg-brand-coral hover:text-white transition-colors"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM14.657 2.929a1 1 0 011.414 0A9.972 9.972 0 0119 10a9.972 9.972 0 01-2.929 7.071 1 1 0 01-1.414-1.414A7.971 7.971 0 0017 10c0-2.21-.894-4.208-2.343-5.657a1 1 0 010-1.414zm-2.829 2.828a1 1 0 011.415 0A5.983 5.983 0 0115 10a5.984 5.984 0 01-1.757 4.243 1 1 0 01-1.415-1.415A3.984 3.984 0 0013 10a3.983 3.983 0 00-1.172-2.828 1 1 0 010-1.415z" clip-rule="evenodd"></path></svg></button></div><p class="text-brand-text/80 text-sm">The feeling of being hungry and ready to eat.</p></div>
+                    <div class="bg-white p-6 rounded-2xl shadow-interactive transition-all duration-300 hover:shadow-interactive-hover hover:-translate-y-1"><div class="flex justify-between items-center mb-2"><h3 class="font-display text-2xl text-brand-blue">Balanced</h3><button onclick="speakText('Balanced')" class="p-2 rounded-full bg-brand-light-blue text-brand-blue hover:bg-brand-blue hover:text-white transition-colors"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM14.657 2.929a1 1 0 011.414 0A9.972 9.972 0 0119 10a9.972 9.972 0 01-2.929 7.071 1 1 0 01-1.414-1.414A7.971 7.971 0 0017 10c0-2.21-.894-4.208-2.343-5.657a1 1 0 010-1.414zm-2.829 2.828a1 1 0 011.415 0A5.983 5.983 0 0115 10a5.984 5.984 0 01-1.757 4.243 1 1 0 01-1.415-1.415A3.984 3.984 0 0013 10a3.983 3.983 0 00-1.172-2.828 1 1 0 010-1.415z" clip-rule="evenodd"></path></svg></button></div><p class="text-brand-text/80 text-sm">A meal that has many different types of good food, like vegetables, fruit, and protein.</p></div>
+                    <div class="bg-white p-6 rounded-2xl shadow-interactive transition-all duration-300 hover:shadow-interactive-hover hover:-translate-y-1"><div class="flex justify-between items-center mb-2"><h3 class="font-display text-2xl text-brand-green">Crunchy</h3><button onclick="speakText('Crunchy')" class="p-2 rounded-full bg-brand-light-green text-brand-green hover:bg-brand-green hover:text-white transition-colors"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM14.657 2.929a1 1 0 011.414 0A9.972 9.972 0 0119 10a9.972 9.972 0 01-2.929 7.071 1 1 0 01-1.414-1.414A7.971 7.971 0 0017 10c0-2.21-.894-4.208-2.343-5.657a1 1 0 010-1.414zm-2.829 2.828a1 1 0 011.415 0A5.983 5.983 0 0115 10a5.984 5.984 0 01-1.757 4.243 1 1 0 01-1.415-1.415A3.984 3.984 0 0013 10a3.983 3.983 0 00-1.172-2.828 1 1 0 010-1.415z" clip-rule="evenodd"></path></svg></button></div><p class="text-brand-text/80 text-sm">Food that makes a snapping sound when you bite it, like a carrot or a cracker.</p></div>
+                    <div class="bg-white p-6 rounded-2xl shadow-interactive transition-all duration-300 hover:shadow-interactive-hover hover:-translate-y-1"><div class="flex justify-between items-center mb-2"><h3 class="font-display text-2xl text-brand-purple">Feast</h3><button onclick="speakText('Feast')" class="p-2 rounded-full bg-brand-light-purple text-brand-purple hover:bg-brand-purple hover:text-white transition-colors"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM14.657 2.929a1 1 0 011.414 0A9.972 9.972 0 0119 10a9.972 9.972 0 01-2.929 7.071 1 1 0 01-1.414-1.414A7.971 7.971 0 0017 10c0-2.21-.894-4.208-2.343-5.657a1 1 0 010-1.414zm-2.829 2.828a1 1 0 011.415 0A5.983 5.983 0 0115 10a5.984 5.984 0 01-1.757 4.243 1 1 0 01-1.415-1.415A3.984 3.984 0 0013 10a3.983 3.983 0 00-1.172-2.828 1 1 0 010-1.415z" clip-rule="evenodd"></path></svg></button></div><p class="text-brand-text/80 text-sm">A very large and special meal with many different kinds of food.</p></div>
+                    <div class="bg-white p-6 rounded-2xl shadow-interactive transition-all duration-300 hover:shadow-interactive-hover hover:-translate-y-1"><div class="flex justify-between items-center mb-2"><h3 class="font-display text-2xl text-brand-yellow">Leftovers</h3><button onclick="speakText('Leftovers')" class="p-2 rounded-full bg-brand-light-yellow text-brand-yellow hover:bg-brand-yellow hover:text-white transition-colors"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM14.657 2.929a1 1 0 011.414 0A9.972 9.972 0 0119 10a9.972 9.972 0 01-2.929 7.071 1 1 0 01-1.414-1.414A7.971 7.971 0 0017 10c0-2.21-.894-4.208-2.343-5.657a1 1 0 010-1.414zm-2.829 2.828a1 1 0 011.415 0A5.983 5.983 0 0115 10a5.984 5.984 0 01-1.757 4.243 1 1 0 01-1.415-1.415A3.984 3.984 0 0013 10a3.983 3.983 0 00-1.172-2.828 1 1 0 010-1.415z" clip-rule="evenodd"></path></svg></button></div><p class="text-brand-text/80 text-sm">Food that is not finished during a meal and is saved to be eaten later.</p></div>
+                    <div class="bg-white p-6 rounded-2xl shadow-interactive transition-all duration-300 hover:shadow-interactive-hover hover:-translate-y-1"><div class="flex justify-between items-center mb-2"><h3 class="font-display text-lg text-brand-coral">Set the table</h3><button onclick="speakText('Set the table')" class="p-2 rounded-full bg-brand-light-coral text-brand-coral hover:bg-brand-coral hover:text-white transition-colors"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM14.657 2.929a1 1 0 011.414 0A9.972 9.972 0 0119 10a9.972 9.972 0 01-2.929 7.071 1 1 0 01-1.414-1.414A7.971 7.971 0 0017 10c0-2.21-.894-4.208-2.343-5.657a1 1 0 010-1.414zm-2.829 2.828a1 1 0 011.415 0A5.983 5.983 0 0115 10a5.984 5.984 0 01-1.757 4.243 1 1 0 01-1.415-1.415A3.984 3.984 0 0013 10a3.983 3.983 0 00-1.172-2.828 1 1 0 010-1.415z" clip-rule="evenodd"></path></svg></button></div><p class="text-brand-text/80 text-sm">To get the table ready for a meal by putting out plates, cups, and forks.</p></div>
+                    <div class="bg-white p-6 rounded-2xl shadow-interactive transition-all duration-300 hover:shadow-interactive-hover hover:-translate-y-1"><div class="flex justify-between items-center mb-2"><h3 class="font-display text-2xl text-brand-blue">Ingredients</h3><button onclick="speakText('Ingredients')" class="p-2 rounded-full bg-brand-light-blue text-brand-blue hover:bg-brand-blue hover:text-white transition-colors"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM14.657 2.929a1 1 0 011.414 0A9.972 9.972 0 0119 10a9.972 9.972 0 01-2.929 7.071 1 1 0 01-1.414-1.414A7.971 7.971 0 0017 10c0-2.21-.894-4.208-2.343-5.657a1 1 0 010-1.414zm-2.829 2.828a1 1 0 011.415 0A5.983 5.983 0 0115 10a5.984 5.984 0 01-1.757 4.243 1 1 0 01-1.415-1.415A3.984 3.984 0 0013 10a3.983 3.983 0 00-1.172-2.828 1 1 0 010-1.415z" clip-rule="evenodd"></path></svg></button></div><p class="text-brand-text/80 text-sm">The different items, like flour, eggs, or salt, that are mixed together to make food.</p></div>
+                    <div class="bg-white p-6 rounded-2xl shadow-interactive transition-all duration-300 hover:shadow-interactive-hover hover:-translate-y-1"><div class="flex justify-between items-center mb-2"><h3 class="font-display text-2xl text-brand-green">Delicious</h3><button onclick="speakText('Delicious')" class="p-2 rounded-full bg-brand-light-green text-brand-green hover:bg-brand-green hover:text-white transition-colors"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM14.657 2.929a1 1 0 011.414 0A9.972 9.972 0 0119 10a9.972 9.972 0 01-2.929 7.071 1 1 0 01-1.414-1.414A7.971 7.971 0 0017 10c0-2.21-.894-4.208-2.343-5.657a1 1 0 010-1.414zm-2.829 2.828a1 1 0 011.415 0A5.983 5.983 0 0115 10a5.984 5.984 0 01-1.757 4.243 1 1 0 01-1.415-1.415A3.984 3.984 0 0013 10a3.983 3.983 0 00-1.172-2.828 1 1 0 010-1.415z" clip-rule="evenodd"></path></svg></button></div><p class="text-brand-text/80 text-sm">When something tastes very, very good.</p></div>
+                    <div class="bg-white p-6 rounded-2xl shadow-interactive transition-all duration-300 hover:shadow-interactive-hover hover:-translate-y-1"><div class="flex justify-between items-center mb-2"><h3 class="font-display text-2xl text-brand-purple">Chew</h3><button onclick="speakText('Chew')" class="p-2 rounded-full bg-brand-light-purple text-brand-purple hover:bg-brand-purple hover:text-white transition-colors"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM14.657 2.929a1 1 0 011.414 0A9.972 9.972 0 0119 10a9.972 9.972 0 01-2.929 7.071 1 1 0 01-1.414-1.414A7.971 7.971 0 0017 10c0-2.21-.894-4.208-2.343-5.657a1 1 0 010-1.414zm-2.829 2.828a1 1 0 011.415 0A5.983 5.983 0 0115 10a5.984 5.984 0 01-1.757 4.243 1 1 0 01-1.415-1.415A3.984 3.984 0 0013 10a3.983 3.983 0 00-1.172-2.828 1 1 0 010-1.415z" clip-rule="evenodd"></path></svg></button></div><p class="text-brand-text/80 text-sm">To use your teeth to break up food before you swallow it.</p></div>
+                    <div class="bg-white p-6 rounded-2xl shadow-interactive transition-all duration-300 hover:shadow-interactive-hover hover:-translate-y-1"><div class="flex justify-between items-center mb-2"><h3 class="font-display text-2xl text-brand-yellow">Sharing</h3><button onclick="speakText('Sharing')" class="p-2 rounded-full bg-brand-light-yellow text-brand-yellow hover:bg-brand-yellow hover:text-white transition-colors"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM14.657 2.929a1 1 0 011.414 0A9.972 9.972 0 0119 10a9.972 9.972 0 01-2.929 7.071 1 1 0 01-1.414-1.414A7.971 7.971 0 0017 10c0-2.21-.894-4.208-2.343-5.657a1 1 0 010-1.414zm-2.829 2.828a1 1 0 011.415 0A5.983 5.983 0 0115 10a5.984 5.984 0 01-1.757 4.243 1 1 0 01-1.415-1.415A3.984 3.984 0 0013 10a3.983 3.983 0 00-1.172-2.828 1 1 0 010-1.415z" clip-rule="evenodd"></path></svg></button></div><p class="text-brand-text/80 text-sm">Letting others have some of your food or passing dishes around the table.</p></div>
+                    <div class="bg-white p-6 rounded-2xl shadow-interactive transition-all duration-300 hover:shadow-interactive-hover hover:-translate-y-1"><div class="flex justify-between items-center mb-2"><h3 class="font-display text-2xl text-brand-coral">Grains</h3><button onclick="speakText('Grains')" class="p-2 rounded-full bg-brand-light-coral text-brand-coral hover:bg-brand-coral hover:text-white transition-colors"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM14.657 2.929a1 1 0 011.414 0A9.972 9.972 0 0119 10a9.972 9.972 0 01-2.929 7.071 1 1 0 01-1.414-1.414A7.971 7.971 0 0017 10c0-2.21-.894-4.208-2.343-5.657a1 1 0 010-1.414zm-2.829 2.828a1 1 0 011.415 0A5.983 5.983 0 0115 10a5.984 5.984 0 01-1.757 4.243 1 1 0 01-1.415-1.415A3.984 3.984 0 0013 10a3.983 3.983 0 00-1.172-2.828 1 1 0 010-1.415z" clip-rule="evenodd"></path></svg></button></div><p class="text-brand-text/80 text-sm">Foods like bread, rice, and pasta that give you energy.</p></div>
+                </div>
+            </section>
+
+            <!-- Section 2: Reading & Quiz -->
+            <section id="reading">
+                <h2 class="font-display text-3xl sm:text-4xl mb-8 flex items-center justify-center gap-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-brand-coral" viewBox="0 0 20 20" fill="currentColor"><path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4c-1.255 0-2.443.29-3.5.804V12a1 1 0 11-2 0V4.804z" /></svg>
+                    Read and Answer
+                </h2>
+                <div class="bg-white p-6 sm:p-8 rounded-3xl shadow-interactive">
+                    <h3 class="font-display text-2xl text-center text-brand-coral mb-4">A Day of Delicious Meals</h3>
+                    <p class="max-w-3xl mx-auto text-base/loose md:text-lg/loose text-brand-text/90 mb-8">"Leo started his day with a big breakfast. He ate grains like cereal to give him energy for school. For lunch, Leo ate a healthy sandwich and a crunchy carrot. It was a balanced meal that made him feel strong. In the evening, the family prepared for dinner. Leo helped set the table by putting out the utensils and a napkin for everyone. Mom followed a special recipe. She mixed many ingredients to make a delicious chicken stew. Because the family was all together, it felt like a feast. Leo had a great appetite and began to chew his food slowly. He showed his best manners by sharing the side dishes and saying 'thank you.' After the main meal, they all enjoyed a sweet dessert of fruit and yogurt. They put the leftovers in the fridge to eat the next day."</p>
+
+                    <div class="border-t-2 border-dashed border-brand-yellow/50 pt-8 space-y-6">
+                        <div x-data="{ open: false }">
+                            <p class="font-bold text-lg mb-2">1. What did Leo eat for breakfast to give him energy?</p>
+                            <button @click="open = !open" class="text-sm bg-brand-light-yellow text-brand-text/80 px-4 py-2 rounded-full font-semibold hover:bg-brand-yellow transition">Show Answer</button>
+                            <p x-show="open" x-transition class="mt-3 p-3 bg-brand-light-green rounded-lg text-brand-text"><strong>Answer:</strong> Leo ate grains, like cereal.</p>
+                        </div>
+                        <div x-data="{ open: false }">
+                            <p class="font-bold text-lg mb-2">2. What two things did Leo put out when he helped set the table?</p>
+                            <button @click="open = !open" class="text-sm bg-brand-light-yellow text-brand-text/80 px-4 py-2 rounded-full font-semibold hover:bg-brand-yellow transition">Show Answer</button>
+                            <p x-show="open" x-transition class="mt-3 p-3 bg-brand-light-green rounded-lg text-brand-text"><strong>Answer:</strong> He put out utensils and a napkin for everyone.</p>
+                        </div>
+                        <div x-data="{ open: false }">
+                            <p class="font-bold text-lg mb-2">3. How did Leo show he had good manners during dinner?</p>
+                            <button @click="open = !open" class="text-sm bg-brand-light-yellow text-brand-text/80 px-4 py-2 rounded-full font-semibold hover:bg-brand-yellow transition">Show Answer</button>
+                            <p x-show="open" x-transition class="mt-3 p-3 bg-brand-light-green rounded-lg text-brand-text"><strong>Answer:</strong> He showed good manners by sharing the side dishes and saying 'thank you.'</p>
+                        </div>
+                        <div x-data="{ open: false }">
+                            <p class="font-bold text-lg mb-2">4. What did the family do with the food they did not finish?</p>
+                            <button @click="open = !open" class="text-sm bg-brand-light-yellow text-brand-text/80 px-4 py-2 rounded-full font-semibold hover:bg-brand-yellow transition">Show Answer</button>
+                            <p x-show="open" x-transition class="mt-3 p-3 bg-brand-light-green rounded-lg text-brand-text"><strong>Answer:</strong> They put the leftovers in the fridge to eat the next day.</p>
+                        </div>
+                        <div x-data="{ open: false }">
+                            <p class="font-bold text-lg mb-2">5. Why did the dinner feel like a feast?</p>
+                            <button @click="open = !open" class="text-sm bg-brand-light-yellow text-brand-text/80 px-4 py-2 rounded-full font-semibold hover:bg-brand-yellow transition">Show Answer</button>
+                            <p x-show="open" x-transition class="mt-3 p-3 bg-brand-light-green rounded-lg text-brand-text"><strong>Answer:</strong> It felt like a feast because the family was all together and there were many kinds of food.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 3: Listen & Answer -->
+            <section id="listen-answer">
+                 <h2 class="font-display text-3xl sm:text-4xl mb-8 flex items-center justify-center gap-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-brand-purple" viewBox="0 0 20 20" fill="currentColor"><path d="M18 3a1 1 0 00-1.447-.894L8.763 6H5a3 3 0 00-3 3v2a3 3 0 003 3h3.763l7.79 3.894A1 1 0 0018 17V3z" /></svg>
+                    Listen and Answer
+                </h2>
+                <div class="bg-white p-6 sm:p-8 rounded-3xl shadow-interactive">
+                    <div class="flex justify-center mb-6">
+                        <audio src='https://opal.google/board/blobs/aa97efe5-eedd-44cd-869e-bcf4a00b5a03' alt='media_1' controls class="w-full max-w-md"></audio>
+                    </div>
+                     <div x-data="{ open: false }" class="mb-8 text-center">
+                        <button @click="open = !open" class="font-semibold bg-brand-light-purple text-brand-purple px-6 py-2 rounded-full hover:bg-brand-purple hover:text-white transition">
+                            <span x-show="!open">Show Script</span>
+                            <span x-show="open">Hide Script</span>
+                        </button>
+                        <div x-show="open" x-transition class="text-left mt-4 p-4 bg-brand-light-purple/50 rounded-lg text-sm text-brand-text/80 max-w-3xl mx-auto">
+                            <p>"Every day starts with a healthy breakfast, usually eggs and grains like toast to give us energy. After a quick lunch at school, I come home with a big appetite for dinner. Today, Mom follows a new recipe, and I help her gather all the ingredients. My job is to set the table with plates, utensils, and a clean napkin for everyone. We sit together for a balanced meal that looks like a giant feast. I remember to use my manners by sharing the side dishes and saying 'please.' The crunchy carrots make a loud sound as I chew them, and everything tastes delicious. After we finish, we put the leftovers in the fridge and enjoy a sweet dessert of fresh fruit."</p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-8" x-data="quiz()">
+                        <!-- Question 1 -->
+                        <div class="p-4 border border-gray-200 rounded-2xl">
+                            <p class="font-bold text-lg mb-3">1. What does the speaker usually eat for breakfast to get energy?</p>
+                            <div class="space-y-2">
+                                <label :class="{'bg-red-100 border-red-300 text-red-700': selection[0] === 'A' && !isCorrect[0], 'bg-green-100 border-green-300 text-green-800': selection[0] === 'A' && isCorrect[0]}" class="flex items-center p-3 border rounded-lg cursor-pointer transition-colors"><input type="radio" name="q1" value="A" @change="checkAnswer(0, 'C', $event)" class="mr-3">A: Pancakes and syrup</label>
+                                <label :class="{'bg-red-100 border-red-300 text-red-700': selection[0] === 'B' && !isCorrect[0], 'bg-green-100 border-green-300 text-green-800': selection[0] === 'B' && isCorrect[0]}" class="flex items-center p-3 border rounded-lg cursor-pointer transition-colors"><input type="radio" name="q1" value="B" @change="checkAnswer(0, 'C', $event)" class="mr-3">B: Fruit and yogurt</label>
+                                <label :class="{'bg-red-100 border-red-300 text-red-700': selection[0] === 'C' && !isCorrect[0], 'bg-green-100 border-green-300 text-green-800': selection[0] === 'C' && isCorrect[0]}" class="flex items-center p-3 border rounded-lg cursor-pointer transition-colors"><input type="radio" name="q1" value="C" @change="checkAnswer(0, 'C', $event)" class="mr-3">C: Eggs and grains like toast</label>
+                                <label :class="{'bg-red-100 border-red-300 text-red-700': selection[0] === 'D' && !isCorrect[0], 'bg-green-100 border-green-300 text-green-800': selection[0] === 'D' && isCorrect[0]}" class="flex items-center p-3 border rounded-lg cursor-pointer transition-colors"><input type="radio" name="q1" value="D" @change="checkAnswer(0, 'C', $event)" class="mr-3">D: Cereal and milk</label>
+                            </div>
+                            <div x-show="selection[0]" x-transition class="mt-3 p-3 rounded-lg text-sm" :class="{'bg-green-100 text-green-800': isCorrect[0], 'bg-red-100 text-red-700': !isCorrect[0]}">
+                                The script states that every day starts with eggs and grains like toast to provide energy.
+                            </div>
+                        </div>
+
+                        <!-- Question 2 -->
+                        <div class="p-4 border border-gray-200 rounded-2xl">
+                             <p class="font-bold text-lg mb-3">2. What is the speaker's specific job when preparing for dinner?</p>
+                             <div class="space-y-2">
+                                 <label :class="{'bg-red-100 border-red-300 text-red-700': selection[1] === 'A' && !isCorrect[1], 'bg-green-100 border-green-300 text-green-800': selection[1] === 'A' && isCorrect[1]}" class="flex items-center p-3 border rounded-lg cursor-pointer transition-colors"><input type="radio" name="q2" value="A" @change="checkAnswer(1, 'B', $event)" class="mr-3">A: Following a new recipe</label>
+                                 <label :class="{'bg-red-100 border-red-300 text-red-700': selection[1] === 'B' && !isCorrect[1], 'bg-green-100 border-green-300 text-green-800': selection[1] === 'B' && isCorrect[1]}" class="flex items-center p-3 border rounded-lg cursor-pointer transition-colors"><input type="radio" name="q2" value="B" @change="checkAnswer(1, 'B', $event)" class="mr-3">B: Setting the table with plates, utensils, and napkins</label>
+                                 <label :class="{'bg-red-100 border-red-300 text-red-700': selection[1] === 'C' && !isCorrect[1], 'bg-green-100 border-green-300 text-green-800': selection[1] === 'C' && isCorrect[1]}" class="flex items-center p-3 border rounded-lg cursor-pointer transition-colors"><input type="radio" name="q2" value="C" @change="checkAnswer(1, 'B', $event)" class="mr-3">C: Putting leftovers in the fridge</label>
+                                 <label :class="{'bg-red-100 border-red-300 text-red-700': selection[1] === 'D' && !isCorrect[1], 'bg-green-100 border-green-300 text-green-800': selection[1] === 'D' && isCorrect[1]}" class="flex items-center p-3 border rounded-lg cursor-pointer transition-colors"><input type="radio" name="q2" value="D" @change="checkAnswer(1, 'B', $event)" class="mr-3">D: Cooking the side dishes</label>
+                             </div>
+                             <div x-show="selection[1]" x-transition class="mt-3 p-3 rounded-lg text-sm" :class="{'bg-green-100 text-green-800': isCorrect[1], 'bg-red-100 text-red-700': !isCorrect[1]}">
+                                 The speaker explicitly mentions, 'My job is to set the table with plates, utensils, and a clean napkin for everyone.'
+                             </div>
+                        </div>
+
+                        <!-- Question 3 -->
+                        <div class="p-4 border border-gray-200 rounded-2xl">
+                            <p class="font-bold text-lg mb-3">3. How does the speaker demonstrate good manners during the meal?</p>
+                            <div class="space-y-2">
+                                <label :class="{'bg-red-100 border-red-300 text-red-700': selection[2] === 'A' && !isCorrect[2], 'bg-green-100 border-green-300 text-green-800': selection[2] === 'A' && isCorrect[2]}" class="flex items-center p-3 border rounded-lg cursor-pointer transition-colors"><input type="radio" name="q3" value="A" @change="checkAnswer(2, 'D', $event)" class="mr-3">A: By finishing all the food on the plate</label>
+                                <label :class="{'bg-red-100 border-red-300 text-red-700': selection[2] === 'B' && !isCorrect[2], 'bg-green-100 border-green-300 text-green-800': selection[2] === 'B' && isCorrect[2]}" class="flex items-center p-3 border rounded-lg cursor-pointer transition-colors"><input type="radio" name="q3" value="B" @change="checkAnswer(2, 'D', $event)" class="mr-3">B: By helping gather ingredients</label>
+                                <label :class="{'bg-red-100 border-red-300 text-red-700': selection[2] === 'C' && !isCorrect[2], 'bg-green-100 border-green-300 text-green-800': selection[2] === 'C' && isCorrect[2]}" class="flex items-center p-3 border rounded-lg cursor-pointer transition-colors"><input type="radio" name="q3" value="C" @change="checkAnswer(2, 'D', $event)" class="mr-3">C: By eating quietly without making a sound</label>
+                                <label :class="{'bg-red-100 border-red-300 text-red-700': selection[2] === 'D' && !isCorrect[2], 'bg-green-100 border-green-300 text-green-800': selection[2] === 'D' && isCorrect[2]}" class="flex items-center p-3 border rounded-lg cursor-pointer transition-colors"><input type="radio" name="q3" value="D" @change="checkAnswer(2, 'D', $event)" class="mr-3">D: By sharing side dishes and saying 'please'</label>
+                            </div>
+                            <div x-show="selection[2]" x-transition class="mt-3 p-3 rounded-lg text-sm" :class="{'bg-green-100 text-green-800': isCorrect[2], 'bg-red-100 text-red-700': !isCorrect[2]}">
+                                The speaker says they remember their manners by sharing the side dishes and saying 'please.'
+                            </div>
+                        </div>
+
+                         <!-- Question 4 -->
+                        <div class="p-4 border border-gray-200 rounded-2xl">
+                            <p class="font-bold text-lg mb-3">4. Which food item makes a loud sound when the speaker chews it?</p>
+                            <div class="space-y-2">
+                                <label :class="{'bg-red-100 border-red-300 text-red-700': selection[3] === 'A' && !isCorrect[3], 'bg-green-100 border-green-300 text-green-800': selection[3] === 'A' && isCorrect[3]}" class="flex items-center p-3 border rounded-lg cursor-pointer transition-colors"><input type="radio" name="q4" value="A" @change="checkAnswer(3, 'B', $event)" class="mr-3">A: Toast</label>
+                                <label :class="{'bg-red-100 border-red-300 text-red-700': selection[3] === 'B' && !isCorrect[3], 'bg-green-100 border-green-300 text-green-800': selection[3] === 'B' && isCorrect[3]}" class="flex items-center p-3 border rounded-lg cursor-pointer transition-colors"><input type="radio" name="q4" value="B" @change="checkAnswer(3, 'B', $event)" class="mr-3">B: Crunchy carrots</label>
+                                <label :class="{'bg-red-100 border-red-300 text-red-700': selection[3] === 'C' && !isCorrect[3], 'bg-green-100 border-green-300 text-green-800': selection[3] === 'C' && isCorrect[3]}" class="flex items-center p-3 border rounded-lg cursor-pointer transition-colors"><input type="radio" name="q4" value="C" @change="checkAnswer(3, 'B', $event)" class="mr-3">C: Fresh fruit</label>
+                                <label :class="{'bg-red-100 border-red-300 text-red-700': selection[3] === 'D' && !isCorrect[3], 'bg-green-100 border-green-300 text-green-800': selection[3] === 'D' && isCorrect[3]}" class="flex items-center p-3 border rounded-lg cursor-pointer transition-colors"><input type="radio" name="q4" value="D" @change="checkAnswer(3, 'B', $event)" class="mr-3">D: Grains</label>
+                            </div>
+                            <div x-show="selection[3]" x-transition class="mt-3 p-3 rounded-lg text-sm" :class="{'bg-green-100 text-green-800': isCorrect[3], 'bg-red-100 text-red-700': !isCorrect[3]}">
+                                The text mentions that 'the crunchy carrots make a loud sound as I chew them.'
+                            </div>
+                        </div>
+
+                         <!-- Question 5 -->
+                        <div class="p-4 border border-gray-200 rounded-2xl">
+                            <p class="font-bold text-lg mb-3">5. What do the family members eat for dessert after the meal?</p>
+                            <div class="space-y-2">
+                                <label :class="{'bg-red-100 border-red-300 text-red-700': selection[4] === 'A' && !isCorrect[4], 'bg-green-100 border-green-300 text-green-800': selection[4] === 'A' && isCorrect[4]}" class="flex items-center p-3 border rounded-lg cursor-pointer transition-colors"><input type="radio" name="q5" value="A" @change="checkAnswer(4, 'A', $event)" class="mr-3">A: Fresh fruit</label>
+                                <label :class="{'bg-red-100 border-red-300 text-red-700': selection[4] === 'B' && !isCorrect[4], 'bg-green-100 border-green-300 text-green-800': selection[4] === 'B' && isCorrect[4]}" class="flex items-center p-3 border rounded-lg cursor-pointer transition-colors"><input type="radio" name="q5" value="B" @change="checkAnswer(4, 'A', $event)" class="mr-3">B: Leftovers from the fridge</label>
+                                <label :class="{'bg-red-100 border-red-300 text-red-700': selection[4] === 'C' && !isCorrect[4], 'bg-green-100 border-green-300 text-green-800': selection[4] === 'C' && isCorrect[4]}" class="flex items-center p-3 border rounded-lg cursor-pointer transition-colors"><input type="radio" name="q5" value="C" @change="checkAnswer(4, 'A', $event)" class="mr-3">C: Sweet grains</label>
+                                <label :class="{'bg-red-100 border-red-300 text-red-700': selection[4] === 'D' && !isCorrect[4], 'bg-green-100 border-green-300 text-green-800': selection[4] === 'D' && isCorrect[4]}" class="flex items-center p-3 border rounded-lg cursor-pointer transition-colors"><input type="radio" name="q5" value="D" @change="checkAnswer(4, 'A', $event)" class="mr-3">D: Eggs and toast</label>
+                            </div>
+                            <div x-show="selection[4]" x-transition class="mt-3 p-3 rounded-lg text-sm" :class="{'bg-green-100 text-green-800': isCorrect[4], 'bg-red-100 text-red-700': !isCorrect[4]}">
+                                At the end of the script, it says they 'enjoy a sweet dessert of fresh fruit.'
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 4: Listen & Repeat -->
+            <section id="listen-repeat">
+                 <h2 class="font-display text-3xl sm:text-4xl mb-8 flex items-center justify-center gap-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-brand-green" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7 4a3 3 0 016 0v4a3 3 0 11-6 0V4zm4 10.93A7.001 7.001 0 0017 8a1 1 0 10-2 0A5 5 0 017 8a1 1 0 00-2 0 7.001 7.001 0 006 6.93V17H6a1 1 0 100 2h8a1 1 0 100-2h-3v-2.07z" clip-rule="evenodd" /></svg>
+                    Listen and Repeat
+                </h2>
+                <div class="bg-white p-6 sm:p-8 rounded-3xl shadow-interactive space-y-4">
+                    <div class="flex items-center gap-4 p-3 bg-brand-light-green/50 rounded-xl"><audio src='https://opal.google/board/blobs/f0e703d5-4c3c-4898-9a12-2697b156518e' alt='media_2' controls></audio><p class="text-lg">I eat dinner with my family.</p></div>
+                    <div class="flex items-center gap-4 p-3 bg-brand-light-green/50 rounded-xl"><audio src='https://opal.google/board/blobs/f6827ad1-984e-4228-b02b-c5c57ed55411' alt='media_3' controls></audio><p class="text-lg">Mom makes yummy pasta.</p></div>
+                    <div class="flex items-center gap-4 p-3 bg-brand-light-green/50 rounded-xl"><audio src='https://opal.google/board/blobs/6291585e-dee9-4ecd-8f09-e58ac53d496e' alt='media_4' controls></audio><p class="text-lg">Pass me the salt, please.</p></div>
+                    <div class="flex items-center gap-4 p-3 bg-brand-light-green/50 rounded-xl"><audio src='https://opal.google/board/blobs/b47ce4b6-ffcf-4072-99cc-3609c4cae569' alt='media_5' controls></audio><p class="text-lg">We sit at the big table.</p></div>
+                    <div class="flex items-center gap-4 p-3 bg-brand-light-green/50 rounded-xl"><audio src='https://opal.google/board/blobs/a1d5110b-b91c-46a7-b7d4-8a682b6804d5' alt='media_6' controls></audio><p class="text-lg">I like to eat sweet apples.</p></div>
+                    <div class="flex items-center gap-4 p-3 bg-brand-light-green/50 rounded-xl"><audio src='https://opal.google/board/blobs/fc4d7d99-9749-4dea-a639-7893313e8003' alt='media_7' controls></audio><p class="text-lg">Dad drinks cold orange juice.</p></div>
+                    <div class="flex items-center gap-4 p-3 bg-brand-light-green/50 rounded-xl"><audio src='https://opal.google/board/blobs/a9727114-4232-4a0e-b12e-42f4f9176c08' alt='media_8' controls></audio><p class="text-lg">Wash your hands before you eat.</p></div>
+                    <div class="flex items-center gap-4 p-3 bg-brand-light-green/50 rounded-xl"><audio src='https://opal.google/board/blobs/df4ad77d-c4f2-4d84-babf-b8d0f721832c' alt='media_9' controls></audio><p class="text-lg">Pizza is my favorite food.</p></div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script>
+        // Text-to-speech function
+        function speakText(text) {
+            if ('speechSynthesis' in window) {
+                const utterance = new SpeechSynthesisUtterance(text);
+                speechSynthesis.speak(utterance);
+            } else {
+                alert("Sorry, your browser doesn't support text-to-speech.");
+            }
+        }
+
+        // Alpine.js data for quiz
+        function quiz() {
+            return {
+                selection: [null, null, null, null, null],
+                isCorrect: [null, null, null, null, null],
+                checkAnswer(questionIndex, correctAnswer, event) {
+                    const selectedValue = event.target.value;
+                    this.selection[questionIndex] = selectedValue;
+                    this.isCorrect[questionIndex] = (selectedValue === correctAnswer);
+                }
+            }
+        }
+    </script>
+</body>
+</html>
